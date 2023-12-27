@@ -1,0 +1,20 @@
+.menu-hover:hover span{
+  color:#fff;
+  transition: ease-in-out 0.2s;
+}
+.showDropDown{
+  display: block;
+  animation: dropdown 0.2s ease-in-out;
+}
+.active{
+    background-color: #1676fc;
+    color:#fff
+}
+@keyframes dropdown {
+  from{
+      opacity: 0;
+  }
+  to{
+      opacity: 1;
+  }
+}
