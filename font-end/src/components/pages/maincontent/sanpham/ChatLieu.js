@@ -3,22 +3,22 @@ import {useState} from "react";
 import {Modal} from "react-bootstrap";
 
 
-const ChatLieu=()=>{
+const ChatLieu = () => {
     const handleClose = () => {
-        let modal=document.querySelector('.modal');
-        modal.style.animation='hideModal 0.5s ease-in-out'
-        setTimeout(()=>{
-            modal.style.display='none'
-        },500)
+        let modal = document.querySelector('.modal');
+        modal.style.animation = 'hideModal 0.5s ease-in-out'
+        setTimeout(() => {
+            modal.style.display = 'none'
+        }, 500)
     }
     const handleShow = () => {
-        let modal=document.querySelector('.modal');
-        modal.style.animation='showModal 0.5s ease-in-out'
-        modal.style.display='block'
+        let modal = document.querySelector('.modal');
+        modal.style.animation = 'showModal 0.5s ease-in-out'
+        modal.style.display = 'block'
 
     }
 
-    return(
+    return (
         <>
             <div className="">
                 <div className="p-[20px]">
@@ -124,7 +124,8 @@ const ChatLieu=()=>{
                             <span className="font-[600]">Thêm chất liệu</span>
                         </div>
                         <div className="text-[14px]">
-                            <p className="mb-[5px] mt-[10px]"><span className="text-primary-red">*</span> Tên chất liệu</p>
+                            <p className="mb-[5px] mt-[10px]"><span className="text-primary-red">*</span> Tên chất liệu
+                            </p>
                             <input type="text"
                                    className="w-[400px] h-[30px] pl-[5px] focus:outline-none focus:border-[#bfdcf6] border-[#999] border-[1px] rounded-[5px]"
                                    placeholder="Tên chất liệu"/>
@@ -142,7 +143,11 @@ const ChatLieu=()=>{
                             </div>
                             <div>
                                 <button className="bg-[#1677ff] py-[5px] px-[25px] rounded-[7px]">Thêm</button>
-                                <button className="bg-primary-red py-[5px] px-[20px] rounded-[7px] ml-[10px]" onClick={()=>{handleClose()}}>Hủy</button>
+                                <button className="bg-primary-red py-[5px] px-[20px] rounded-[7px] ml-[10px]"
+                                        onClick={() => {
+                                            handleClose()
+                                        }}>Hủy
+                                </button>
                             </div>
                         </div>
                     </div>

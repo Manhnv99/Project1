@@ -1,7 +1,5 @@
-
-
-const SanPham=()=>{
-    return(
+const SanPham = () => {
+    return (
         <>
             <div className="">
                 <div className="p-[20px]">
@@ -24,7 +22,8 @@ const SanPham=()=>{
                                     </div>
                                     <div className="text-center">
                                         <span className="text-[#444] text-[14px] font-[500]">Trạng thái :</span>
-                                        <select className="ml-[10px] h-[30px] w-[300px] border-[1px] border-[#999] border-solid rounded-[5px] focus:outline-none text-[#444] text-[13px]">
+                                        <select
+                                            className="ml-[10px] h-[30px] w-[300px] border-[1px] border-[#999] border-solid rounded-[5px] focus:outline-none text-[#444] text-[13px]">
                                             <option>Tất Cả</option>
                                             <option>Đang Sử Dụng</option>
                                             <option>Ngưng Sử Dụng</option>
@@ -35,7 +34,8 @@ const SanPham=()=>{
                                     <button className="py-[7px] px-[20px] bg-primary-blue text-[#fff] rounded-[5px]">
                                         Tìm kiếm
                                     </button>
-                                    <button className="py-[7px] px-[20px] bg-primary-red text-[#fff] rounded-[5px] ml-[10px]">
+                                    <button
+                                        className="py-[7px] px-[20px] bg-primary-red text-[#fff] rounded-[5px] ml-[10px]">
                                         Làm mới bộ lọc
                                     </button>
                                 </div>
@@ -79,7 +79,8 @@ const SanPham=()=>{
                                         <td className=" px-4 py-[10px]">Giày Slip-on sneaker13</td>
                                         <td className="text-center px-4 py-[15px]">20-12-2023</td>
                                         <td className="text-center px-4 py-[15px]">
-                                            <span className="bg-primary-green text-[#fff] py-[7px] px-[17px] rounded-[20px] cursor-pointer">Đang sử dụng</span>
+                                            <span
+                                                className="bg-primary-green text-[#fff] py-[7px] px-[17px] rounded-[20px] cursor-pointer">Đang sử dụng</span>
                                         </td>
                                         <td className="text-center px-4 py-[15px]">
                                             <i className="fa-regular fa-eye py-[7px] px-[12px] rounded-[5px] bg-[#e48902] text-[#fff] cursor-pointer"></i>

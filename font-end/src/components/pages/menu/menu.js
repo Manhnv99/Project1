@@ -2,7 +2,7 @@ import {Link, NavLink} from "react-router-dom";
 import './menu.css'
 import {useEffect} from "react";
 
-const Menu=()=>{
+const Menu = () => {
 
     useEffect(() => {
         dropDownQLSP();
@@ -10,68 +10,70 @@ const Menu=()=>{
         dropDownQLKM();
     }, []);
 
-    const dropDownQLSP=()=>{
-        let qlsp=document.getElementsByClassName('dropdown-qlsp')
-        let listOption=document.querySelector('.list-option-qlsp')
-        let keepshow=document.getElementsByClassName('keepshow-qlsp');
-        for(let i=0;i<keepshow.length;i++){
-            keepshow[i].addEventListener('click',()=>{
-                for(let i=0;i<keepshow.length;i++){
+    const dropDownQLSP = () => {
+        let qlsp = document.getElementsByClassName('dropdown-qlsp')
+        let listOption = document.querySelector('.list-option-qlsp')
+        let keepshow = document.getElementsByClassName('keepshow-qlsp');
+        for (let i = 0; i < keepshow.length; i++) {
+            keepshow[i].addEventListener('click', () => {
+                for (let i = 0; i < keepshow.length; i++) {
                     keepshow[i].classList.remove('active')
                 }
                 listOption.classList.toggle('showDropDown')
                 keepshow[i].classList.add('active')
             })
         }
-        qlsp[0].addEventListener('click',()=>{
+        qlsp[0].addEventListener('click', () => {
             listOption.classList.toggle('showDropDown')
         });
     }
-    const dropDownQLND=()=>{
-        let qlnd=document.getElementsByClassName('dropdown-qlnd')
-        let listOption=document.querySelector('.list-option-qlnd')
-        let keepshow=document.getElementsByClassName('keepshow-qlnd');
-        for(let i=0;i<keepshow.length;i++){
-            keepshow[i].addEventListener('click',()=>{
-                for(let i=0;i<keepshow.length;i++){
+    const dropDownQLND = () => {
+        let qlnd = document.getElementsByClassName('dropdown-qlnd')
+        let listOption = document.querySelector('.list-option-qlnd')
+        let keepshow = document.getElementsByClassName('keepshow-qlnd');
+        for (let i = 0; i < keepshow.length; i++) {
+            keepshow[i].addEventListener('click', () => {
+                for (let i = 0; i < keepshow.length; i++) {
                     keepshow[i].classList.remove('active')
                 }
                 listOption.classList.toggle('showDropDown')
                 keepshow[i].classList.add('active')
             })
         }
-        qlnd[0].addEventListener('click',()=>{
+        qlnd[0].addEventListener('click', () => {
             listOption.classList.toggle('showDropDown')
         });
     }
-    const dropDownQLKM=()=>{
-        let qlkm=document.getElementsByClassName('dropdown-qlkm')
-        let listOption=document.querySelector('.list-option-qlkm')
-        let keepshow=document.getElementsByClassName('keepshow-qlkm');
-        for(let i=0;i<keepshow.length;i++){
-            keepshow[i].addEventListener('click',()=>{
-                for(let i=0;i<keepshow.length;i++){
+    const dropDownQLKM = () => {
+        let qlkm = document.getElementsByClassName('dropdown-qlkm')
+        let listOption = document.querySelector('.list-option-qlkm')
+        let keepshow = document.getElementsByClassName('keepshow-qlkm');
+        for (let i = 0; i < keepshow.length; i++) {
+            keepshow[i].addEventListener('click', () => {
+                for (let i = 0; i < keepshow.length; i++) {
                     keepshow[i].classList.remove('active')
                 }
                 listOption.classList.toggle('showDropDown')
                 keepshow[i].classList.add('active')
             })
         }
-        qlkm[0].addEventListener('click',()=>{
+        qlkm[0].addEventListener('click', () => {
             listOption.classList.toggle('showDropDown')
         });
     }
-    return(
+    return (
         <>
-            <div className="fixed h-screen max-w-[256px] border-[1px] border-solid border-black bg-[#001429] text-[12px]">
+            <div
+                className="fixed h-screen max-w-[256px] border-[1px] border-solid border-black bg-[#001429] text-[12px]">
                 <div className="pt-[30px] px-[30px]">
-                    <div>
-                        <img className="w-full object-fill" src="https://clipart-library.com/image_gallery2/Nike-Logo-PNG-Clipart.png" alt=""/>
+                    <div className="mb-[20px]">
+                        <img className="w-full object-fill rounded-[50%]"
+                             src="/logo.png" alt=""/>
                     </div>
                     <ul>
                         <li className="py-[10px] menu-hover">
                             <Link to="/" className="">
-                                <span className=""><i className="fa-solid fa-chart-line text-[#fff]"></i></span>
+                            <span className=""><i className="fa-solid fa-chart-line text-[#fff]"></i></span>
                                 <span className="text-[#999] ml-[10px]">Thống Kê</span>
                             </Link>
                         </li>

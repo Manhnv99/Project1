@@ -1,25 +1,24 @@
 import './css/main.css'
 
 
-const TheLoai=()=>{
+const TheLoai = () => {
 
     const handleClose = () => {
-        let modal=document.querySelector('.modal');
-        modal.style.animation='hideModal 0.5s ease-in-out'
-        setTimeout(()=>{
-            modal.style.display='none'
-        },500)
+        let modal = document.querySelector('.modal');
+        modal.style.animation = 'hideModal 0.5s ease-in-out'
+        setTimeout(() => {
+            modal.style.display = 'none'
+        }, 500)
     }
     const handleShow = () => {
-        let modal=document.querySelector('.modal');
-        modal.style.animation='showModal 0.5s ease-in-out'
-        modal.style.display='block'
+        let modal = document.querySelector('.modal');
+        modal.style.animation = 'showModal 0.5s ease-in-out'
+        modal.style.display = 'block'
 
     }
 
 
-
-    return(
+    return (
         <>
             <div className="">
                 <div className="p-[20px]">

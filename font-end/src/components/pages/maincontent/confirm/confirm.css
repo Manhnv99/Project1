@@ -1,0 +1,42 @@
+.icon{
+    animation: growth 0.4s ease-in-out;
+}
+.confirm{
+    animation: show 0.4s ease-in-out;
+}
+
+@keyframes growth {
+    0%{
+        font-size: 0;
+        opacity: 0;
+        padding: 0;
+    }
+    100%{
+        opacity: 1;
+        font-size: 40px;
+        padding: 25px 40px;
+    }
+}
+
+
+@keyframes show {
+    0%{
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes close {
+    0%{
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+        transform: translateY(-100px);
+    }
+}

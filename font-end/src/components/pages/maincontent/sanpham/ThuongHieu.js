@@ -1,24 +1,23 @@
 import './css/main.css'
 
-const ThuongHieu=()=>{
+const ThuongHieu = () => {
 
     const handleClose = () => {
-        let modal=document.querySelector('.modal');
-        modal.style.animation='hideModal 0.5s ease-in-out'
-        setTimeout(()=>{
-            modal.style.display='none'
-        },500)
+        let modal = document.querySelector('.modal');
+        modal.style.animation = 'hideModal 0.5s ease-in-out'
+        setTimeout(() => {
+            modal.style.display = 'none'
+        }, 500)
     }
     const handleShow = () => {
-        let modal=document.querySelector('.modal');
-        modal.style.animation='showModal 0.5s ease-in-out'
-        modal.style.display='block'
+        let modal = document.querySelector('.modal');
+        modal.style.animation = 'showModal 0.5s ease-in-out'
+        modal.style.display = 'block'
 
     }
 
 
-
-    return(
+    return (
         <>
             <div className="">
                 <div className="p-[20px]">
@@ -41,7 +40,8 @@ const ThuongHieu=()=>{
                                     </div>
                                     <div className="text-center">
                                         <span className="text-[#444] text-[14px] font-[500]">Trạng thái :</span>
-                                        <select className="ml-[10px] h-[30px] w-[300px] border-[1px] border-[#999] border-solid rounded-[5px] focus:outline-none text-[#444] text-[13px]">
+                                        <select
+                                            className="ml-[10px] h-[30px] w-[300px] border-[1px] border-[#999] border-solid rounded-[5px] focus:outline-none text-[#444] text-[13px]">
                                             <option>Tất Cả</option>
                                             <option>Đang Sử Dụng</option>
                                             <option>Ngưng Sử Dụng</option>
@@ -52,7 +52,8 @@ const ThuongHieu=()=>{
                                     <button className="py-[7px] px-[20px] bg-primary-blue text-[#fff] rounded-[5px]">
                                         Tìm kiếm
                                     </button>
-                                    <button className="py-[7px] px-[20px] bg-primary-red text-[#fff] rounded-[5px] ml-[10px]">
+                                    <button
+                                        className="py-[7px] px-[20px] bg-primary-red text-[#fff] rounded-[5px] ml-[10px]">
                                         Làm mới bộ lọc
                                     </button>
                                 </div>
@@ -67,9 +68,10 @@ const ThuongHieu=()=>{
                                     <span className="text-[17px] font-[500] ml-[5px]">Danh sách thương hiệu</span>
                                 </div>
                                 <div>
-                                    <button className="text-[#fff] bg-[#1578ff] py-[7px] px-[20px] rounded-[7px]" onClick={() => {
-                                        handleShow()
-                                    }}>
+                                    <button className="text-[#fff] bg-[#1578ff] py-[7px] px-[20px] rounded-[7px]"
+                                            onClick={() => {
+                                                handleShow()
+                                            }}>
                                         <i className="fa-solid fa-plus text-[12px]"></i>
                                         <span className="text-[15px] ml-[5px]">Thêm</span>
                                     </button>
@@ -98,7 +100,8 @@ const ThuongHieu=()=>{
                                         <td className=" px-4 py-[10px]">Giày Slip-on sneaker13</td>
                                         <td className="text-center px-4 py-[15px]">20-12-2023</td>
                                         <td className="text-center px-4 py-[15px]">
-                                            <span className="bg-primary-green text-[#fff] py-[7px] px-[17px] rounded-[20px] cursor-pointer">Đang sử dụng</span>
+                                            <span
+                                                className="bg-primary-green text-[#fff] py-[7px] px-[17px] rounded-[20px] cursor-pointer">Đang sử dụng</span>
                                         </td>
                                         <td className="text-center px-4 py-[15px]">
                                             <i className="fa-regular fa-eye py-[7px] px-[12px] rounded-[5px] bg-[#e48902] text-[#fff] cursor-pointer"></i>
@@ -120,7 +123,8 @@ const ThuongHieu=()=>{
                             <span className="font-[600]">Thêm thương hiệu</span>
                         </div>
                         <div className="text-[14px]">
-                            <p className="mb-[5px] mt-[10px]"><span className="text-primary-red">*</span> Tên thương hiệu
+                            <p className="mb-[5px] mt-[10px]"><span className="text-primary-red">*</span> Tên thương
+                                hiệu
                             </p>
                             <input type="text"
                                    className="w-[400px] h-[30px] pl-[5px] focus:outline-none focus:border-[#bfdcf6] border-[#999] border-[1px] rounded-[5px]"

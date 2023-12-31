@@ -1,22 +1,22 @@
 import './css/main.css'
 
-const DeGiay=()=>{
+const DeGiay = () => {
 
     const handleClose = () => {
-        let modal=document.querySelector('.modal');
-        modal.style.animation='hideModal 0.5s ease-in-out'
-        setTimeout(()=>{
-            modal.style.display='none'
-        },500)
+        let modal = document.querySelector('.modal');
+        modal.style.animation = 'hideModal 0.5s ease-in-out'
+        setTimeout(() => {
+            modal.style.display = 'none'
+        }, 500)
     }
     const handleShow = () => {
-        let modal=document.querySelector('.modal');
-        modal.style.animation='showModal 0.5s ease-in-out'
-        modal.style.display='block'
+        let modal = document.querySelector('.modal');
+        modal.style.animation = 'showModal 0.5s ease-in-out'
+        modal.style.display = 'block'
 
     }
 
-    return(
+    return (
         <>
             <div className="">
                 <div className="p-[20px]">
@@ -67,7 +67,10 @@ const DeGiay=()=>{
                                     <span className="text-[17px] font-[500] ml-[5px]">Danh sách đế giày</span>
                                 </div>
                                 <div>
-                                    <button className="text-[#fff] bg-[#1578ff] py-[7px] px-[20px] rounded-[7px]" onClick={()=>{handleShow()}}>
+                                    <button className="text-[#fff] bg-[#1578ff] py-[7px] px-[20px] rounded-[7px]"
+                                            onClick={() => {
+                                                handleShow()
+                                            }}>
                                         <i className="fa-solid fa-plus text-[12px]"></i>
                                         <span className="text-[15px] ml-[5px]">Thêm</span>
                                     </button>

@@ -1,7 +1,5 @@
-
-
-const KhachHang=()=>{
-    return(
+const KhachHang = () => {
+    return (
         <>
             <div className="">
                 <div className="p-[20px]">
@@ -78,16 +76,23 @@ const KhachHang=()=>{
                                     <tr className="bg-primary-orange text-[#fff] text-[13px] font-[400]">
                                         <th className="w-1/12 border-r-[1px] border-solid border-[#fff] py-[10px]">STT</th>
                                         <th className="w-2/12 border-r-[1px] border-solid border-[#fff] py-[10px]">Ảnh</th>
-                                        <th className="w-2/12 border-r-[1px] border-solid border-[#fff] py-[10px]">Tên khách hàng
+                                        <th className="w-2/12 border-r-[1px] border-solid border-[#fff] py-[10px]">Tên
+                                            khách hàng
                                         </th>
                                         <th className="w-2/12 border-r-[1px] border-solid border-[#fff] py-[10px]">CCCD</th>
-                                        <th className="w-1/12 border-r-[1px] border-solid border-[#fff] py-[10px]">Số điện
+                                        <th className="w-1/12 border-r-[1px] border-solid border-[#fff] py-[10px]">Số
+                                            điện
                                             thoại
                                         </th>
-                                        <th className="w-1/12 border-r-[1px] border-solid border-[#fff] py-[10px]">Ngày sinh
+                                        <th className="w-1/12 border-r-[1px] border-solid border-[#fff] py-[10px]">Ngày
+                                            sinh
                                         </th>
-                                        <th className="w-1/12 border-r-[1px] border-solid border-[#fff] py-[10px]">Trạng thái</th>
-                                        <th className="w-2/12 border-r-[1px] border-solid border-[#fff] py-[10px]">Hành Động</th>
+                                        <th className="w-1/12 border-r-[1px] border-solid border-[#fff] py-[10px]">Trạng
+                                            thái
+                                        </th>
+                                        <th className="w-2/12 border-r-[1px] border-solid border-[#fff] py-[10px]">Hành
+                                            Động
+                                        </th>
                                     </tr>
                                     </thead>
                                     <tbody className="">
