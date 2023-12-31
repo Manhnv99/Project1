@@ -1,7 +1,7 @@
 const Header = () => {
     return (
         <>
-            <div className="fixed top-0 left-[256px] right-0 bg-[#fff]">
+            <div className="fixed top-0 left-[16.666667%] right-0 bg-[#fff]">
                 <div className="py-[15px] px-[30px] flex justify-between items-center">
                     <div className="">
                         <i className="fa-solid fa-layer-group cursor-pointer"></i>

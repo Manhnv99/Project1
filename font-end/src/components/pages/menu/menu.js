@@ -64,7 +64,7 @@ const Menu = () => {
     return (
         <>
             <div
-                className="fixed h-screen max-w-[256px] border-[1px] border-solid border-black bg-[#001429] text-[12px]">
+                className="fixed h-screen max-w-[16.666667%] border-[1px] border-solid border-black bg-[#001429] text-[12px]">
                 <div className="pt-[30px] px-[30px]">
                     <div className="mb-[20px]">
                         <img className="w-full object-fill rounded-[50%]"

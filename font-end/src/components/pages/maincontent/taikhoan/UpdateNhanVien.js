@@ -240,24 +240,26 @@ const UpdateNhanVien = () => {
                 </div>
                 <div className="flex w-full">
                     <div className="w-3/12 bg-[#fff] rounded-[5px] flex justify-center">
-                        <div>
+                        <div className="w-full">
                             <h1 className="text-center font-[600] text-[20px] my-[50px]">Ảnh đại diện</h1>
-                            <div
-                                className="border-[1px] border-[#999] w-[300px] h-[300px] rounded-[50%] flex items-center justify-center cursor-pointer"
-                                onClick={handleChoseImg}>
-                                <img src={"http://localhost:8080/staff/img/"+img} className="my-image w-full h-full rounded-[50%] object-cover"/>
-                                <button className="my-button hidden">Chọn Ảnh</button>
-                                <input type="file" className="myimg hidden" accept="image/*"
-                                       onChange={handleFileChange}/>
+                            <div className="flex justify-center">
+                                <div
+                                    className="border-[1px] border-[#999] w-[80%] h-[250px] rounded-[50%] flex items-center justify-center cursor-pointer"
+                                    onClick={handleChoseImg}>
+                                    <img src={"http://localhost:8080/staff/img/"+img} className="my-image w-full h-full rounded-[50%] object-cover"/>
+                                    <button className="my-button hidden">Chọn Ảnh</button>
+                                    <input type="file" className="myimg hidden" accept="image/*"
+                                           onChange={handleFileChange}/>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div className="w-9/12 bg-[#fff] rounded-[5px] mx-[20px]">
-                        <div className="text-center">
+                        <div className="text-center my-[20px]">
                             <h1 className="font-[700] text-[22px]">Thông tin nhân viên</h1>
                         </div>
                         {/*Quét QR*/}
-                        <div className="my-[20px] flex justify-between mr-[150px]">
+                        <div className="my-[20px] flex justify-between mr-[50px]">
                             <div></div>
                             <button
                                 className="py-[8px] px-[22px] bg-[#1b90d3] text-[#fff] rounded-[5px] hover:opacity-[0.8] ease-in-out duration-[0.3s]">
@@ -266,7 +268,7 @@ const UpdateNhanVien = () => {
                             </button>
                         </div>
                         <div className="grid grid-cols-2 text-[14px] px-[50px] pb-[50px]">
-                            <div className="px-[25px]">
+                            <div className="">
                                 <div className="mb-[20px]">
                                     <div className="flex">
                                         <p className="mb-[7px]"><span className="text-primary-red">*</span> Tên nhân
@@ -275,18 +277,25 @@ const UpdateNhanVien = () => {
                                         <p className="error text-primary-red hidden ml-[5px]"></p>
                                     </div>
                                     <input
-                                        className="w-[400px] h-[30px] border-[1px] border-[#999] rounded-[5px] focus:outline-none pl-[10px]"
-                                        type="text" value={name} placeholder="Tên nhân viên" onBlur={handleOnBlurName} onChange={(e)=>{setName(e.target.value)}}/>
+                                        className="w-[90%] h-[30px] border-[1px] border-[#999] rounded-[5px] focus:outline-none pl-[10px]"
+                                        type="text" value={name} placeholder="Tên nhân viên" onBlur={handleOnBlurName}
+                                        onChange={(e) => {
+                                            setName(e.target.value)
+                                        }}/>
                                 </div>
                                 <div className="mb-[20px]">
                                     <div className="flex">
-                                        <p className="mb-[7px]"><span className="text-primary-red">*</span> Căn cước công dân
+                                        <p className="mb-[7px]"><span className="text-primary-red">*</span> Căn cước
+                                            công dân
                                         </p>
                                         <p className="error text-primary-red ml-[5px]"></p>
                                     </div>
                                     <input
-                                        className="w-[400px] h-[30px] border-[1px] border-[#999] rounded-[5px] focus:outline-none pl-[10px]"
-                                        type="text" value={cccd} placeholder="CCCD" onBlur={handleOnBlurCCCD} onChange={(e)=>{setCCCD(e.target.value)}}/>
+                                        className="w-[90%] h-[30px] border-[1px] border-[#999] rounded-[5px] focus:outline-none pl-[10px]"
+                                        type="text" value={cccd} placeholder="CCCD" onBlur={handleOnBlurCCCD}
+                                        onChange={(e) => {
+                                            setCCCD(e.target.value)
+                                        }}/>
                                 </div>
                                 <div className="mb-[20px]">
                                     <div className="flex">
@@ -294,8 +303,11 @@ const UpdateNhanVien = () => {
                                         <p className="error text-primary-red ml-[5px] hidden"></p>
                                     </div>
                                     <input
-                                        className="w-[400px] h-[30px] border-[1px] border-[#999] rounded-[5px] focus:outline-none pl-[10px]"
-                                        type="email" value={email} placeholder="Email" onBlur={handleOnBlurEmail} onChange={(e)=>{setEmail(e.target.value)}}/>
+                                        className="w-[90%] h-[30px] border-[1px] border-[#999] rounded-[5px] focus:outline-none pl-[10px]"
+                                        type="email" value={email} placeholder="Email" onBlur={handleOnBlurEmail}
+                                        onChange={(e) => {
+                                            setEmail(e.target.value)
+                                        }}/>
                                 </div>
                                 <div className="mb-[20px]">
                                     <div className="flex">
@@ -305,10 +317,14 @@ const UpdateNhanVien = () => {
                                         <p
                                             className="error text-primary-red ml-[5px]"></p>
                                     </div>
-                                    <select onChange={(e) => {handleChangeCity(e)}} onBlur={(e)=>{handleOnBlurThanhPho(e)}}
-                                            className="city w-[400px] h-[30px] border-[1px] border-[#999] rounded-[5px] focus:outline-none pl-[10px]">
+                                    <select onChange={(e) => {
+                                        handleChangeCity(e)
+                                    }} onBlur={(e) => {
+                                        handleOnBlurThanhPho(e)
+                                    }}
+                                            className="city w-[90%] h-[30px] border-[1px] border-[#999] rounded-[5px] focus:outline-none pl-[10px]">
                                         <option value="">--Chọn Tỉnh/Thành Phố--</option>
-                                        {listCity.map((item,index) => {
+                                        {listCity.map((item, index) => {
                                             return (
                                                 <>
                                                     <option key={index} value={index}>{item.name}</option>
@@ -324,11 +340,15 @@ const UpdateNhanVien = () => {
                                         </p>
                                         <p className="error text-primary-red ml-[5px]"></p>
                                     </div>
-                                    <select onChange={(e)=>{setXaPhuong(e.target.value)}} onBlur={(e)=>{handleOnBlurXaPhuong(e)}}
-                                            className="w-[400px] h-[30px] border-[1px] border-[#999] rounded-[5px] focus:outline-none pl-[10px]">
+                                    <select onChange={(e) => {
+                                        setXaPhuong(e.target.value)
+                                    }} onBlur={(e) => {
+                                        handleOnBlurXaPhuong(e)
+                                    }}
+                                            className="w-[90%] h-[30px] border-[1px] border-[#999] rounded-[5px] focus:outline-none pl-[10px]">
                                         <option value="">--Chọn Xã/Phường--</option>
-                                        {listWard.map((item,index)=> {
-                                            return(
+                                        {listWard.map((item, index) => {
+                                            return (
                                                 <>
                                                     <option key={index}>{item.name}</option>
                                                 </>
@@ -343,15 +363,19 @@ const UpdateNhanVien = () => {
                                         </p>
                                         <p className="error text-primary-red ml-[5px]"></p>
                                     </div>
-                                    <select onChange={(e) => {setTrangThai(e.target.value)}} onBlur={(e)=>{handleOnBlurTrangThai(e)}}
-                                            className="status w-[400px] h-[30px] border-[1px] border-[#999] rounded-[5px] focus:outline-none pl-[10px]">
+                                    <select onChange={(e) => {
+                                        setTrangThai(e.target.value)
+                                    }} onBlur={(e) => {
+                                        handleOnBlurTrangThai(e)
+                                    }}
+                                            className="status w-[90%] h-[30px] border-[1px] border-[#999] rounded-[5px] focus:outline-none pl-[10px]">
                                         <option value="">--Chọn trạng thái--</option>
                                         <option value="true">Đang Làm</option>
                                         <option value="false">Ngưng Làm</option>
                                     </select>
                                 </div>
                             </div>
-                            <div className="px-[25px]">
+                            <div className="ml-[10%]">
                                 {/*Ngày Sinh*/}
                                 <div className="mb-[20px]">
                                     <div className="flex">
@@ -360,8 +384,12 @@ const UpdateNhanVien = () => {
                                         <p className="error text-primary-red ml-[5px]"></p>
                                     </div>
                                     <input
-                                        className="w-[400px] h-[30px] border-[1px] border-[#999] rounded-[5px] focus:outline-none pl-[10px]"
-                                        type="date" value={ngaySinh} onChange={(e)=>{setNgaySinh(e.target.value)}} onBlur={(e)=>{handleOnBlurBirthday(e)}}/>
+                                        className="w-full h-[30px] border-[1px] border-[#999] rounded-[5px] focus:outline-none pl-[10px]"
+                                        type="date" value={ngaySinh} onChange={(e) => {
+                                        setNgaySinh(e.target.value)
+                                    }} onBlur={(e) => {
+                                        handleOnBlurBirthday(e)
+                                    }}/>
                                 </div>
                                 {/*Giới Tính*/}
                                 <div className="mb-[20px]">
@@ -369,12 +397,16 @@ const UpdateNhanVien = () => {
                                     </p>
                                     <div className="flex">
                                         <div>
-                                            <input type="radio" name="gender" value="true" onClick={(e)=>{setGender(e.target.value)}}/>
+                                            <input type="radio" name="gender" value="true" onClick={(e) => {
+                                                setGender(e.target.value)
+                                            }}/>
                                             <span className="ml-[5px]">Nam</span>
                                         </div>
                                         <div className="ml-[10px]">
-                                            <input type="radio" name="gender" value="false" onClick={(e)=>{setGender(e.target.value)}}/>
-                                            <span className="ml-[5px]" >Nữ</span>
+                                            <input type="radio" name="gender" value="false" onClick={(e) => {
+                                                setGender(e.target.value)
+                                            }}/>
+                                            <span className="ml-[5px]">Nữ</span>
                                         </div>
                                     </div>
                                 </div>
@@ -387,8 +419,11 @@ const UpdateNhanVien = () => {
                                         <p className="error text-primary-red ml-[5px]"></p>
                                     </div>
                                     <input
-                                        className="w-[400px] h-[30px] border-[1px] border-[#999] rounded-[5px] focus:outline-none pl-[10px]"
-                                        type="text" value={sdt} placeholder="Số điện thoại" onBlur={handleOnBlurSDT} onChange={(e)=>{setSDT(e.target.value)}}/>
+                                        className="w-full h-[30px] border-[1px] border-[#999] rounded-[5px] focus:outline-none pl-[10px]"
+                                        type="text" value={sdt} placeholder="Số điện thoại" onBlur={handleOnBlurSDT}
+                                        onChange={(e) => {
+                                            setSDT(e.target.value)
+                                        }}/>
                                 </div>
                                 {/*Quan huyen*/}
                                 <div className="mb-[20px]">
@@ -397,11 +432,15 @@ const UpdateNhanVien = () => {
                                         </p>
                                         <p className="error text-primary-red ml-[5px]"></p>
                                     </div>
-                                    <select onChange={(e)=>{handleChangeDistrict(e)}} onBlur={(e)=>{handleOnBlurQuanHuyen(e)}}
-                                            className="district w-[400px] h-[30px] border-[1px] border-[#999] rounded-[5px] focus:outline-none pl-[10px]">
+                                    <select onChange={(e) => {
+                                        handleChangeDistrict(e)
+                                    }} onBlur={(e) => {
+                                        handleOnBlurQuanHuyen(e)
+                                    }}
+                                            className="district w-full h-[30px] border-[1px] border-[#999] rounded-[5px] focus:outline-none pl-[10px]">
                                         <option value="">--Chọn Quận/Huyện--</option>
-                                        {listDistrict.map((item,index)=>{
-                                            return(
+                                        {listDistrict.map((item, index) => {
+                                            return (
                                                 <>
                                                     <option key={index} value={index}>{item.name}</option>
                                                 </>
@@ -418,22 +457,29 @@ const UpdateNhanVien = () => {
                                         <p className="error text-primary-red ml-[5px]"></p>
                                     </div>
                                     <input
-                                        className="w-[400px] h-[30px] border-[1px] border-[#999] rounded-[5px] focus:outline-none pl-[10px]"
-                                        type="text" value={address} placeholder="Số nhà/Ngõ/Đường" onBlur={handleOnBlurAddress} onChange={(e)=>{setAddress(e.target.value)}}/>
-                                </div>
-                                <div className="float-end mr-[76px] mt-[100px]">
-                                    <button
-                                        className="py-[8px] px-[30px] bg-[#0075ff] text-[#fff] rounded-[5px] hover:opacity-[0.8] ease-in-out duration-[0.3s]"
-                                        onClick={handleUpdateStaff}>Cập Nhật
-                                    </button>
-                                    <button
-                                        className="py-[8px] px-[30px] border-[1px] border-[#999] text-[#444] rounded-[5px] ml-[10px] hover:opacity-[0.8] ease-in-out duration-[0.3s]"
-                                        onClick={()=>{nav("/nhanvien-management")}}>Hủy
-                                    </button>
+                                        className="w-full h-[30px] border-[1px] border-[#999] rounded-[5px] focus:outline-none pl-[10px]"
+                                        type="text" value={address} placeholder="Số nhà/Ngõ/Đường"
+                                        onBlur={handleOnBlurAddress} onChange={(e) => {
+                                        setAddress(e.target.value)
+                                    }}/>
                                 </div>
                             </div>
                         </div>
-
+                        <div className="flex justify-between mr-[50px] mb-[50px]">
+                            <div></div>
+                            <div>
+                                <button
+                                    className="py-[8px] px-[30px] bg-[#0075ff] text-[#fff] rounded-[5px] hover:opacity-[0.8] ease-in-out duration-[0.3s]"
+                                    onClick={handleUpdateStaff}>Cập Nhật
+                                </button>
+                                <button
+                                    className="py-[8px] px-[30px] border-[1px] border-[#999] text-[#444] rounded-[5px] ml-[10px] hover:opacity-[0.8] ease-in-out duration-[0.3s]"
+                                    onClick={() => {
+                                        nav("/nhanvien-management")
+                                    }}>Hủy
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

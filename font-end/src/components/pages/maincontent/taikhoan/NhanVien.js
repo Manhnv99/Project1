@@ -219,7 +219,7 @@ const NhanVien = () => {
                                 </div>
                             </div>
                             <div>
-                                <table className="w-full text-[14px]">
+                                <table className="w-full text-[12px]">
                                     <thead>
                                     <tr className="bg-primary-orange text-[#fff] text-[13px] font-[400]">
                                         <th className="w-1/12 border-r-[1px] border-solid border-[#fff] py-[10px]">STT</th>
@@ -228,7 +228,7 @@ const NhanVien = () => {
                                             nhân
                                             viên
                                         </th>
-                                        <th className="w-2/12 border-r-[1px] border-solid border-[#fff] py-[10px]">CCCD</th>
+                                        <th className="w-1/12 border-r-[1px] border-solid border-[#fff] py-[10px]">CCCD</th>
                                         <th className="w-1/12 border-r-[1px] border-solid border-[#fff] py-[10px]">Số
                                             điện
                                             thoại
@@ -239,7 +239,7 @@ const NhanVien = () => {
                                         <th className="w-1/12 border-r-[1px] border-solid border-[#fff] py-[10px]">Giới
                                             tính
                                         </th>
-                                        <th className="w-1/12 border-r-[1px] border-solid border-[#fff] py-[10px]">Trạng
+                                        <th className="w-2/12 border-r-[1px] border-solid border-[#fff] py-[10px]">Trạng
                                             thái
                                         </th>
                                         <th className="w-1/12 border-r-[1px] border-solid border-[#fff] py-[10px]">Hành
