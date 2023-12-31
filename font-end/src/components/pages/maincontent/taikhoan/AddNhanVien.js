@@ -5,6 +5,7 @@ import geographyservice from "../../../services/geographyservice";
 import {useNavigate} from "react-router-dom";
 import Loading from "../loading/loading";
 import Confirm from "../confirm/Confirm";
+import QRScan from "../../../utils/QRScan/QRScan";
 
 
 const AddNhanVien = () => {
@@ -29,6 +30,7 @@ const AddNhanVien = () => {
     const [loading,setLoading]=useState(false)
     const [viewConfirm,setViewConfirm]=useState(false)
     const [addOrUpdate,setAddOrUpdate]=useState(true)
+    const [showQRCode,setShowQRCode]=useState(false)
 
 
 
@@ -102,10 +104,6 @@ const AddNhanVien = () => {
         if(file===null){
             alert('Bạn Chưa Chọn Ảnh')
         }else{
-            // setViewConfirm(true)
-            // if(value===true){
-            //     console.log('dung')
-            // }
             if(value.StaffValidation(name,cccd,email,ngaySinh,sdt,thanhpho,quanHuyen,xaPhuong,address,trangThai,error)===0){
                 setViewConfirm(true)
                 if(confirm===true){
@@ -196,10 +194,37 @@ const AddNhanVien = () => {
         setViewConfirm(status)
     }
 
+    const handleShowScanQRCode=()=>{
+        setShowQRCode(true)
+    }
+
+    const handleCloseScanQRCode=()=>{
+        setShowQRCode(false)
+    }
+
+    const getDataQR=(data)=>{
+        const result=data.split("|");
+        setCCCD(result[0])
+        setName(result[2])
+        const nam=document.querySelector('input[name="gender"][value="true"]')
+        const nu=document.querySelector('input[name="gender"][value="false"]')
+        if(result[4]==="Nam"){
+            nam.checked=true
+        }else {
+            nu.checked = true
+        }
+        const date=result[3].slice(0,2)
+        const month=result[3].slice(2,4)
+        const year=result[3].slice(4)
+        const myBirthDay=year+"-"+month+"-"+date
+        setNgaySinh(myBirthDay)
+    }
+
 
 
     return (
         <>
+            {showQRCode && <QRScan handleCloseScanQRCode={handleCloseScanQRCode} getDataQR={getDataQR}/>}
             {viewConfirm && <Confirm message={"Xác nhận thêm nhân viên?"}addOrUpdate={addOrUpdate} handleAddStaff={handleAddStaff} handleCloseConfirm={handleCloseConfirm}/>}
             {loading && <Loading/>}
             <div className="p-[10px]">
@@ -230,7 +255,7 @@ const AddNhanVien = () => {
                         {/*Quét QR*/}
                         <div className="my-[20px] flex justify-between mx-[50px]">
                             <div></div>
-                            <button
+                            <button onClick={handleShowScanQRCode}
                                 className="py-[8px] px-[22px] bg-[#1b90d3] text-[#fff] rounded-[5px] hover:opacity-[0.8] ease-in-out duration-[0.3s]">
                                 <i className="fa-solid fa-qrcode mr-[7px]"></i>
                                 Quét QR
@@ -247,7 +272,7 @@ const AddNhanVien = () => {
                                     </div>
                                     <input
                                         className="w-[90%] h-[30px] border-[1px] border-[#999] rounded-[5px] focus:outline-none pl-[10px]"
-                                        type="text" placeholder="Tên nhân viên" onBlur={handleOnBlurName}
+                                        type="text" placeholder="Tên nhân viên" value={name} onBlur={handleOnBlurName}
                                         onChange={(e) => {
                                             setName(e.target.value)
                                         }}/>
@@ -261,7 +286,7 @@ const AddNhanVien = () => {
                                     </div>
                                     <input
                                         className="w-[90%] h-[30px] border-[1px] border-[#999] rounded-[5px] focus:outline-none pl-[10px]"
-                                        type="text" placeholder="CCCD" onBlur={handleOnBlurCCCD} onChange={(e) => {
+                                        type="text" placeholder="CCCD" value={cccd} onBlur={handleOnBlurCCCD} onChange={(e) => {
                                         setCCCD(e.target.value)
                                     }}/>
                                 </div>
@@ -352,7 +377,7 @@ const AddNhanVien = () => {
                                     </div>
                                     <input
                                         className="w-full h-[30px] border-[1px] border-[#999] rounded-[5px] focus:outline-none pl-[10px]"
-                                        type="date" onChange={(e) => {
+                                        type="date" value={ngaySinh} onChange={(e) => {
                                         setNgaySinh(e.target.value)
                                     }} onBlur={(e) => {
                                         handleOnBlurBirthday(e)
@@ -364,7 +389,7 @@ const AddNhanVien = () => {
                                     </p>
                                     <div className="flex">
                                         <div>
-                                            <input type="radio" checked name="gender" value="true" onClick={(e) => {
+                                            <input type="radio" name="gender" value="true" onClick={(e) => {
                                                 setGender(e.target.value)
                                             }}/>
                                             <span className="ml-[5px]">Nam</span>

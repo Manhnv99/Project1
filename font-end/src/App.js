@@ -30,7 +30,6 @@ function App() {
                 <div className="w-10/12">
                     <Header/>
                     <div className="main-content w-full bg-[#f4f4f4] mt-[65px]">
-                        <QRScan/>
                         <Toastmessage/>
                         <Routes>
                             <Route path="/" element={<ThongKe/>}/>

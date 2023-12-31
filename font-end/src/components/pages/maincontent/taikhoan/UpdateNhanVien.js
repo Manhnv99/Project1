@@ -5,6 +5,7 @@ import geographyservice from "../../../services/geographyservice";
 import {useNavigate, useParams} from "react-router-dom";
 import Loading from "../loading/loading";
 import Confirm from "../confirm/Confirm";
+import QRScan from "../../../utils/QRScan/QRScan";
 
 
 const UpdateNhanVien = () => {
@@ -29,6 +30,7 @@ const UpdateNhanVien = () => {
     const [loading,setLoading]=useState(false)
     const [viewConfirm,setViewConfirm]=useState(false)
     const [addOrUpdate,setAddOrUpdate]=useState(false)
+    const [showQRCode,setShowQRCode]=useState(false)
     const [img,setImg]=useState(null)
     const {id}=useParams()
 
@@ -228,10 +230,38 @@ const UpdateNhanVien = () => {
         setViewConfirm(status)
     }
 
+    const handleShowScanQRCode=()=>{
+        setShowQRCode(true)
+    }
+
+    const handleCloseScanQRCode=()=>{
+        setShowQRCode(false)
+    }
+
+
+    const getDataQR=(data)=>{
+        const result=data.split("|");
+        setCCCD(result[0])
+        setName(result[2])
+        const nam=document.querySelector('input[name="gender"][value="true"]')
+        const nu=document.querySelector('input[name="gender"][value="false"]')
+        if(result[4]==="Nam"){
+            nam.checked=true
+        }else {
+            nu.checked = true
+        }
+        const date=result[3].slice(0,2)
+        const month=result[3].slice(2,4)
+        const year=result[3].slice(4)
+        const myBirthDay=year+"-"+month+"-"+date
+        setNgaySinh(myBirthDay)
+    }
+
 
 
     return (
         <>
+            {showQRCode && <QRScan handleCloseScanQRCode={handleCloseScanQRCode} getDataQR={getDataQR}/>}
             {viewConfirm && <Confirm message={"Xác Nhận Cập Nhật Nhân Viên?"} addOrUpdate={addOrUpdate}  handleUpdateStaff={handleUpdateStaff} handleCloseConfirm={handleCloseConfirm}/>}
             {loading && <Loading/>}
             <div className="p-[10px]">
@@ -261,7 +291,7 @@ const UpdateNhanVien = () => {
                         {/*Quét QR*/}
                         <div className="my-[20px] flex justify-between mr-[50px]">
                             <div></div>
-                            <button
+                            <button onClick={handleShowScanQRCode}
                                 className="py-[8px] px-[22px] bg-[#1b90d3] text-[#fff] rounded-[5px] hover:opacity-[0.8] ease-in-out duration-[0.3s]">
                                 <i className="fa-solid fa-qrcode mr-[7px]"></i>
                                 Quét QR
