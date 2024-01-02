@@ -18,8 +18,6 @@ public class ProductDetail {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String code;
-
     private Long quantity;
 
     @ManyToOne
@@ -45,6 +43,7 @@ public class ProductDetail {
 
     private Long created_by;
 
+    @Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     @Temporal(TemporalType.TIMESTAMP)
     private Date updated_at;
 

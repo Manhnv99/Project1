@@ -18,8 +18,9 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(columnDefinition = "nvarchar(255)")
     private String code;
+
+    private String name;
 
     private Boolean gender;
 
@@ -53,6 +54,7 @@ public class Product {
 
     private Long created_by;
 
+    @Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     @Temporal(TemporalType.TIMESTAMP)
     private Date updated_at;
 

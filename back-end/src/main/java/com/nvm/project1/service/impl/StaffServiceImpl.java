@@ -23,6 +23,12 @@ public class StaffServiceImpl implements StaffService {
 
     @Override
     public StaffResponse addStaff(StaffRequest staffRequest) {
+        if(staffRepository.getTop1()==null){
+            staffRequest.setCode("NV1");
+        }else{
+            String code=staffRepository.getTop1().getCode();
+            staffRequest.setCode(code.substring(0,2)+(Integer.parseInt(code.substring(2))+1));
+        }
         Staff staff=new Staff();
         staff.setCode(staffRequest.getCode());
         staff.setName(staffRequest.getName());
@@ -97,5 +103,6 @@ public class StaffServiceImpl implements StaffService {
         return new StaffResponse(staffUpdate.getId(),staffUpdate.getCode(),staffUpdate.getName(),staffUpdate.getGender(),staffUpdate.getBirthDay(),staffUpdate.getPhone(),staffUpdate.getEmail(),staffUpdate.getCccd(),
                 staffUpdate.getRole(),staffUpdate.getStatus(),staffUpdate.getPassword(),staffUpdate.getImage(),staffUpdate.getAddress(),staffUpdate.getThanhPho(),staffUpdate.getQuanHuyen(),staffUpdate.getPhuongXa());
     }
+
 
 }

@@ -1,6 +1,6 @@
 import {useContext, useEffect, useLayoutEffect, useState} from "react";
 import {Context} from "../../../provider/provider";
-import staffservice from "../../../services/staffservice";
+import staffservice from "../../../services/staffService";
 import {useNavigate, useParams} from "react-router-dom";
 
 const DetailNhanVien = () => {

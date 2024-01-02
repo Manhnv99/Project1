@@ -1,7 +1,7 @@
 import {useContext, useEffect, useLayoutEffect, useState} from "react";
 import {Context} from "../../../provider/provider";
-import staffservice from "../../../services/staffservice";
-import geographyservice from "../../../services/geographyservice";
+import staffservice from "../../../services/staffService";
+import geographyservice from "../../../services/geographService";
 import {useNavigate, useParams} from "react-router-dom";
 import Loading from "../loading/loading";
 import Confirm from "../confirm/Confirm";

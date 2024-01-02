@@ -1,7 +1,7 @@
 import {createContext, useEffect, useState} from "react";
-import Staffservice from "../services/staffservice";
-import geographyservice from "../services/geographyservice";
-import staffservice from "../services/staffservice";
+import Staffservice from "../services/staffService";
+import geographyservice from "../services/geographService";
+import staffservice from "../services/staffService";
 const Context=createContext();
 const Provider=({children})=> {
 

@@ -23,6 +23,12 @@ public interface StaffRepository extends JpaRepository<Staff,Long> {
     List<StaffResponse> getAll();
 
 
+    @Query(value = """
+            select * from staff order by staff.id desc limit 1
+            """,nativeQuery = true)
+    Staff getTop1();
+
+
     @Query( """
             select new com.nvm.project1.response.StaffResponse(s.id,s.code,s.name,s.gender,s.birthDay,s.phone,s.email,s.cccd,
             s.role,s.status,s.password,s.image,s.address,s.thanhPho,s.quanHuyen,s.phuongXa)

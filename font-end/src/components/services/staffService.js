@@ -2,7 +2,7 @@ import axios from "axios";
 
 
 
-class Staffservice{
+class StaffService {
 
     uploadImage=(formData)=>{
         return axios.post(`http://localhost:8080/staff/staff-upload`,formData,{
@@ -66,4 +66,4 @@ class Staffservice{
 
 }
 
-export default new Staffservice();
+export default new StaffService();

@@ -1,7 +1,7 @@
 import axios from "axios";
 
 
-class Geographyservice{
+class GeographService {
 
     callAPICity=()=>{
        return axios.get(`https://provinces.open-api.vn/api/?depth=3`);
@@ -10,4 +10,4 @@ class Geographyservice{
 
 }
 
-export default  new Geographyservice();
+export default  new GeographService();

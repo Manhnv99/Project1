@@ -1,7 +1,7 @@
 import {useNavigate} from "react-router-dom";
 import {useEffect, useLayoutEffect, useState} from "react";
-import staffservice from "../../../services/staffservice";
-import './main.css'
+import staffservice from "../../../services/staffService";
+import './taikhoan.css'
 
 
 
@@ -248,11 +248,11 @@ const NhanVien = () => {
                                     </tr>
                                     </thead>
                                     <tbody className="">
-                                        {listStaff.map(item=>{
+                                        {listStaff.map((item,index)=>{
                                             return(
                                                 <>
                                                     <tr className="">
-                                                        <td className="text-center px-4 py-[15px]">1</td>
+                                                        <td className="text-center px-4 py-[15px]">{currentPage===1 ? index+1 : ((currentPage-1)*3)+(index+1) }</td>
                                                         <td className="px-4 py-[10px]">
                                                             <img className="w-full object-cover h-[100px] rounded-[10px]"
                                                                  src={"http://localhost:8080/staff/img/" + item.image}/>

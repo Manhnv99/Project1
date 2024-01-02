@@ -14,8 +14,6 @@ import AddNhanVien from "./components/pages/maincontent/taikhoan/AddNhanVien";
 import {Toastmessage} from "./components/pages/maincontent/toastmessage/toastmessage";
 import UpdateNhanVien from "./components/pages/maincontent/taikhoan/UpdateNhanVien";
 import DetailNhanVien from "./components/pages/maincontent/taikhoan/DetailNhanVien";
-import QRScan from "./components/utils/QRScan/QRScan";
-
 
 
 

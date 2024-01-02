@@ -1,6 +1,7 @@
 package com.nvm.project1.service;
 
 
+import com.nvm.project1.entity.Staff;
 import com.nvm.project1.request.StaffRequest;
 import com.nvm.project1.response.StaffResponse;
 
@@ -29,4 +30,5 @@ public interface StaffService {
     StaffResponse getStaffById(Long id);
 
     StaffResponse updateStaffById(Long id,StaffRequest staffRequest);
+
 }
