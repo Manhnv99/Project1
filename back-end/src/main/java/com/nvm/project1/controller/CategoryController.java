@@ -16,6 +16,11 @@ public class CategoryController {
     @Autowired
     private CategoryService categoryService;
 
+    @GetMapping("/list")
+    public ResponseEntity<?> getAll(){
+        return ResponseEntity.status(HttpStatus.OK).body(categoryService.getAll());
+    }
+
     @PostMapping("/add")
     public ResponseEntity<?> add(@RequestBody CategoryRequest categoryRequest){
         return ResponseEntity.status(HttpStatus.CREATED).body(categoryService.add(categoryRequest));

@@ -5,22 +5,17 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
-
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Entity
-@Table(name = "status_productdetail")
-public class StatusProductDetail {
-
+@Table(name = "product_detail_image")
+public class ProductDetailImage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(columnDefinition = "nvarchar(255)")
-    private String code;
+    private Long productDetail_id;
 
-    @Column(columnDefinition = "nvarchar(255)")
-    private String name;
+    private String image;
 }

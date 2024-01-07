@@ -15,6 +15,12 @@ import java.util.List;
 @Repository
 public interface CategoryRepository extends JpaRepository<Category,Long> {
 
+
+    @Query("""
+            select new com.nvm.project1.response.CategoryResponse(c.id,c.name,c.updated_at,c.status) from Category c order by c.id desc
+            """)
+    List<CategoryResponse> getAll();
+
     @Query("""
             select new com.nvm.project1.response.CategoryResponse(c.id,c.name,c.updated_at,c.status) from Category c order by c.id desc
             """)

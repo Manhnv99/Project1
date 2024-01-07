@@ -1,4 +1,10 @@
+import {useNavigate} from "react-router-dom";
+
+
 const SanPham = () => {
+
+    const nav=useNavigate();
+
     return (
         <>
             <div className="">
@@ -31,11 +37,11 @@ const SanPham = () => {
                                     </div>
                                 </div>
                                 <div className="text-[14px] mt-[20px] text-center py-[20px]">
-                                    <button className="py-[7px] px-[20px] bg-primary-blue text-[#fff] rounded-[5px]">
+                                    <button className="hover:opacity-[0.8] ease-in-out duration-[0.5s] py-[7px] px-[20px] bg-primary-blue text-[#fff] rounded-[5px]">
                                         Tìm kiếm
                                     </button>
                                     <button
-                                        className="py-[7px] px-[20px] bg-primary-red text-[#fff] rounded-[5px] ml-[10px]">
+                                        className="hover:opacity-[0.8] ease-in-out duration-[0.5s] py-[7px] px-[20px] bg-primary-red text-[#fff] rounded-[5px] ml-[10px]">
                                         Làm mới bộ lọc
                                     </button>
                                 </div>
@@ -50,7 +56,7 @@ const SanPham = () => {
                                     <span className="text-[17px] font-[500] ml-[5px]">Danh sách sản phẩm</span>
                                 </div>
                                 <div>
-                                    <button className="text-[#fff] bg-[#1578ff] py-[7px] px-[20px] rounded-[7px]">
+                                    <button onClick={()=>{nav("/create-sanpham-management")}} className="hover:opacity-[0.8] ease-in-out duration-[0.5s] text-[#fff] bg-[#1578ff] py-[7px] px-[20px] rounded-[7px]">
                                         <i className="fa-solid fa-plus text-[12px]"></i>
                                         <span className="text-[15px] ml-[5px]">Thêm</span>
                                     </button>
@@ -83,8 +89,8 @@ const SanPham = () => {
                                                 className="bg-primary-green text-[#fff] py-[7px] px-[17px] rounded-[20px] cursor-pointer">Đang sử dụng</span>
                                         </td>
                                         <td className="text-center px-4 py-[15px]">
-                                            <i className="fa-regular fa-eye py-[7px] px-[12px] rounded-[5px] bg-[#e48902] text-[#fff] cursor-pointer"></i>
-                                            <i className="fa-regular fa-pen-to-square py-[7px] px-[12px] rounded-[5px] bg-[#0189e5] text-[#fff] cursor-pointer ml-[7px]"></i>
+                                            <i className="hover:opacity-[0.8] ease-in-out duration-[0.5s] fa-regular fa-eye py-[7px] px-[12px] rounded-[5px] bg-[#e48902] text-[#fff] cursor-pointer"></i>
+                                            <i className="hover:opacity-[0.8] ease-in-out duration-[0.5s] fa-regular fa-pen-to-square py-[7px] px-[12px] rounded-[5px] bg-[#0189e5] text-[#fff] cursor-pointer ml-[7px]"></i>
                                         </td>
                                     </tr>
                                     </tbody>

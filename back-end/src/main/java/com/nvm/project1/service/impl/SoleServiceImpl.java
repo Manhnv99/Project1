@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -18,6 +19,11 @@ public class SoleServiceImpl implements SoleService {
 
     @Autowired
     private SoleRepository soleRepository;
+
+    @Override
+    public List<SoleResponse> getAll() {
+        return soleRepository.getAll();
+    }
 
     @Override
     public SoleResponse add(SoleRequest soleRequest) {

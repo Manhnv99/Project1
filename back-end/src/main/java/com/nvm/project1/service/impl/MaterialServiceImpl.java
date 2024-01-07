@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -19,6 +20,11 @@ public class MaterialServiceImpl implements MaterialService {
     @Autowired
     private MaterialRepository materialRepository;
 
+
+    @Override
+    public List<MaterialResponse> getAll() {
+        return materialRepository.getAll();
+    }
 
     @Override
     public MaterialResponse add(MaterialRequest materialRequest) {

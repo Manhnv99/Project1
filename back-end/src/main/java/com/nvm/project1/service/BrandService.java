@@ -8,6 +8,8 @@ import java.util.List;
 
 public interface BrandService {
 
+    List<BrandResponse> getAll();
+
     BrandResponse add(BrandRequest brandRequest);
 
     List<BrandResponse> getAllPaging(Pageable pageable);

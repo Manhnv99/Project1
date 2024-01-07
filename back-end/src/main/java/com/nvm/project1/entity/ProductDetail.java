@@ -20,6 +20,8 @@ public class ProductDetail {
 
     private Long quantity;
 
+    private Double price;
+
     @ManyToOne
     @JoinColumn(name = "product_id",referencedColumnName = "id")
     private Product product;
@@ -32,9 +34,7 @@ public class ProductDetail {
     @JoinColumn(name = "color_id",referencedColumnName = "id")
     private Color color;
 
-    @ManyToOne
-    @JoinColumn(name = "status_id",referencedColumnName = "id")
-    private StatusProductDetail status;
+    private Boolean status;
 
 
     @Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")

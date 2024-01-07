@@ -1,11 +1,13 @@
 import './css/sanpham.css'
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import categoryService from "../../../services/categoryService";
 import materialService from "../../../services/materialService";
+import {Context} from "../../../provider/provider";
+import Loading from "../loading/loading";
 const moment = require('moment');
 
 const ChatLieu = () => {
-
+    const value=useContext(Context);
     const [name,setName]=useState('')
     const [status,setStatus]=useState(true);
     const [list,setList]=useState([])
@@ -16,6 +18,7 @@ const ChatLieu = () => {
     const [nameFind,setNameFind]=useState('')
     const [statusFind,setStatusFind]=useState('')
     const [whatActionMovePage,setWhatActionMovePage]=useState('')
+    const [loading,setLoading]=useState(false)
 
 
     useEffect(() => {
@@ -24,7 +27,7 @@ const ChatLieu = () => {
     }, []);
 
     const showData=(page)=>{
-        materialService.getAll(page).then(res=>{
+        materialService.getAllPaging(page).then(res=>{
             if(res && res.status===200){
                 setList(res.data);
             }
@@ -44,32 +47,42 @@ const ChatLieu = () => {
     }
 
 
-    const handleAddOrEdit= async ()=>{
+    const handleAddOrEdit= ()=>{
         if(validate(name)===0){
             if(whatAction==='add'){
-                const materialRequest={
-                    name:name,
-                    status: status === 'false' ? false : true,
-                }
-                await materialService.addCategory(materialRequest).then(res=>{
-                    console.log(res.data)
-                }).catch(e=>{
-                    console.log(e)
-                })
-                await getPage();
-                await showData(1);
-                await movePageAnimation(1);
-                await handleClose();
+                setLoading(true)
+                setTimeout(async ()=>{
+                    const materialRequest={
+                        name:name,
+                        status: status === 'false' ? false : true,
+                    }
+                    await materialService.addCategory(materialRequest).then(res=>{
+                        console.log(res.data)
+                    }).catch(e=>{
+                        console.log(e)
+                    })
+                    await showData(1);
+                    await getPage();
+                    await movePageAnimation(1);
+                    await setLoading(false);
+                    await value.showToastMessage("Thêm Chất Liệu Thành Công!")
+                    await handleClose();
+                },1000)
             }else{
-                const materialRequest={
-                    name:name,
-                    status: status,
-                }
-                await materialService.update(id,materialRequest).catch(e=>{
-                    console.log(e)
-                })
-                await showData(currentPage);
-                await handleClose();
+                setLoading(true)
+                setTimeout(async ()=>{
+                    const materialRequest={
+                        name:name,
+                        status: status,
+                    }
+                    await materialService.update(id,materialRequest).catch(e=>{
+                        console.log(e)
+                    })
+                    await showData(currentPage);
+                    await setLoading(false)
+                    await value.showToastMessage("Cập Nhật Chất Liệu Thành Công!")
+                    await handleClose();
+                },1000)
             }
         }
     }
@@ -83,7 +96,7 @@ const ChatLieu = () => {
         setWhatAction('edit')
         setId(id)
         materialService.getById(id).then(res=>{
-            const status=document.querySelectorAll('.status option')
+            const status=document.querySelectorAll('.statusModal option')
             setName(res.data.name);
             if(res.data.status===true){
                 status[0].selected=true
@@ -100,8 +113,9 @@ const ChatLieu = () => {
     const handleShowDetail=(id)=>{
         setWhatAction('detail')
         materialService.getById(id).then(res=>{
-            const status=document.querySelectorAll('.status option')
+            const status=document.querySelectorAll('.statusModal option')
             setName(res.data.name);
+            console.log(status)
             if(res.data.status===true){
                 status[0].selected=true
             }else{
@@ -114,7 +128,7 @@ const ChatLieu = () => {
     }
 
     const handleClose = () => {
-        const status=document.querySelectorAll('.status option')
+        const status=document.querySelectorAll('.statusModal option')
         let modal = document.querySelector('.modal');
         const modal_container=document.querySelector('.modal-container')
         const namevld=document.querySelector('.namevld')
@@ -279,6 +293,7 @@ const ChatLieu = () => {
 
     return (
         <>
+            {loading && <Loading/>}
             <div className="">
                 <div className="p-[20px]">
                     <div className="title mb-[20px]">
@@ -309,11 +324,11 @@ const ChatLieu = () => {
                                     </div>
                                 </div>
                                 <div className="text-[14px] mt-[20px] text-center py-[20px]">
-                                    <button onClick={handleFind} className="py-[7px] px-[20px] bg-primary-blue text-[#fff] rounded-[5px]">
+                                    <button onClick={handleFind} className="hover:opacity-[0.8] ease-in-out duration-[0.5s] py-[7px] px-[20px] bg-primary-blue text-[#fff] rounded-[5px]">
                                         Tìm kiếm
                                     </button>
                                     <button onClick={handleClear}
-                                            className="py-[7px] px-[20px] bg-primary-red text-[#fff] rounded-[5px] ml-[10px]">
+                                            className="hover:opacity-[0.8] ease-in-out duration-[0.5s] py-[7px] px-[20px] bg-primary-red text-[#fff] rounded-[5px] ml-[10px]">
                                         Làm mới bộ lọc
                                     </button>
                                 </div>
@@ -328,7 +343,7 @@ const ChatLieu = () => {
                                     <span className="text-[17px] font-[500] ml-[5px]">Danh sách thể loại</span>
                                 </div>
                                 <div>
-                                    <button className="text-[#fff] bg-[#1578ff] py-[7px] px-[20px] rounded-[7px]"
+                                    <button className="hover:opacity-[0.8] ease-in-out duration-[0.5s] text-[#fff] bg-[#1578ff] py-[7px] px-[20px] rounded-[7px]"
                                             onClick={() => {
                                                 handleAdd()
                                             }}>
@@ -368,8 +383,8 @@ const ChatLieu = () => {
                                                         className="bg-primary-green text-[#fff] py-[7px] px-[17px] rounded-[20px] cursor-pointer">{item.status ? "Đang Sử Dụng":"Ngưng Sử Dụng"}</span>
                                                 </td>
                                                 <td className="text-center px-4 py-[15px]">
-                                                    <i onClick={()=>{handleShowDetail(item.id)}} className="fa-regular fa-eye py-[7px] px-[12px] rounded-[5px] bg-[#e48902] text-[#fff] cursor-pointer"></i>
-                                                    <i onClick={()=>{handleEdit(item.id)}} className="fa-regular fa-pen-to-square py-[7px] px-[12px] rounded-[5px] bg-[#0189e5] text-[#fff] cursor-pointer ml-[7px]"></i>
+                                                    <i onClick={()=>{handleShowDetail(item.id)}} className="hover:opacity-[0.8] ease-in-out duration-[0.5s] fa-regular fa-eye py-[7px] px-[12px] rounded-[5px] bg-[#e48902] text-[#fff] cursor-pointer"></i>
+                                                    <i onClick={()=>{handleEdit(item.id)}} className="hover:opacity-[0.8] ease-in-out duration-[0.5s] fa-regular fa-pen-to-square py-[7px] px-[12px] rounded-[5px] bg-[#0189e5] text-[#fff] cursor-pointer ml-[7px]"></i>
                                                 </td>
                                             </tr>
                                         )
@@ -400,7 +415,7 @@ const ChatLieu = () => {
                 </div>
             </div>
             {/*Modal*/}
-            <div className="modal fixed bottom-0 top-0 left-0 right-0 z-10 bg-[rgba(0,0,0,0.4)] hidden">
+            <div className="modal fixed bottom-0 top-0 left-0 right-0 z-2 bg-[rgba(0,0,0,0.4)] hidden">
                 <div className="flex justify-center items-center h-full">
                     <div className="modal-container p-[20px] bg-[#fff] rounded-[5px]">
                         <div className="flex justify-between">
@@ -419,7 +434,7 @@ const ChatLieu = () => {
                         <div className="text-[14px]">
                             <p className="mb-[5px] mt-[10px]"><span className="text-primary-red">*</span> Trạng thái</p>
                             <select onChange={(e)=>{setStatus(e.target.value)}}
-                                    className="status w-[400px] h-[30px] pl-[5px] focus:outline-none focus:border-[#bfdcf6] border-[#999] border-[1px] rounded-[5px]">
+                                    className="statusModal w-[400px] h-[30px] pl-[5px] focus:outline-none focus:border-[#bfdcf6] border-[#999] border-[1px] rounded-[5px]">
                                 <option value="true">Đang Sử Dụng</option>
                                 <option value="false">Ngưng Sử Dụng</option>
                             </select>
@@ -429,10 +444,10 @@ const ChatLieu = () => {
                             </div>
                             <div>
                                 {whatAction !== 'detail' && whatAction ==='add' && <button onClick={handleAddOrEdit}
-                                                                                           className="bg-[#1677ff] py-[5px] px-[25px] rounded-[7px]">Thêm</button>}
+                                                                                           className="hover:opacity-[0.8] ease-in-out duration-[0.5s] bg-[#1677ff] py-[5px] px-[25px] rounded-[7px]">Thêm</button>}
                                 {whatAction === 'edit' && <button onClick={handleAddOrEdit}
-                                                                  className="bg-[#1677ff] py-[5px] px-[25px] rounded-[7px]">Cập Nhật</button>}
-                                <button className="bg-primary-red py-[5px] px-[20px] rounded-[7px] ml-[10px]"
+                                                                  className="hover:opacity-[0.8] ease-in-out duration-[0.5s] bg-[#1677ff] py-[5px] px-[25px] rounded-[7px]">Cập Nhật</button>}
+                                <button className="hover:opacity-[0.8] ease-in-out duration-[0.5s] bg-primary-red py-[5px] px-[20px] rounded-[7px] ml-[10px]"
                                         onClick={() => {
                                             handleClose()
                                         }}>Hủy

@@ -17,6 +17,11 @@ public class SoleController {
     @Autowired
     private SoleService soleService;
 
+    @GetMapping("/list")
+    public ResponseEntity<?> getAll(){
+        return ResponseEntity.status(HttpStatus.OK).body(soleService.getAll());
+    }
+
     @PostMapping("/add")
     public ResponseEntity<?> add(@RequestBody SoleRequest soleRequest){
         return ResponseEntity.status(HttpStatus.CREATED).body(soleService.add(soleRequest));

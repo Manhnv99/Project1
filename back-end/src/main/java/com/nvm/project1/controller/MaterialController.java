@@ -19,6 +19,12 @@ public class MaterialController {
     @Autowired
     private MaterialService materialService;
 
+
+    @GetMapping("/list")
+    public ResponseEntity<?> getAll(){
+        return ResponseEntity.status(HttpStatus.OK).body(materialService.getAll());
+    }
+
     @PostMapping("/add")
     public ResponseEntity<?> add(@RequestBody MaterialRequest materialRequest){
         return ResponseEntity.status(HttpStatus.CREATED).body(materialService.add(materialRequest));

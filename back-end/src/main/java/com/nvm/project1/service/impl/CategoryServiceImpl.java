@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -23,10 +24,19 @@ public class CategoryServiceImpl implements CategoryService {
 
 
     @Override
+    public List<CategoryResponse> getAll() {
+        return categoryRepository.getAll();
+    }
+
+    @Override
     public CategoryResponse add(CategoryRequest categoryRequest) {
-        String code=categoryRepository.getTop1().getCode();
         Category categoryAdd=new Category();
-        categoryAdd.setCode(code.substring(0,4)+((Integer.parseInt(code.substring(4)))+1));
+        if(categoryRepository.getTop1()==null){
+            categoryAdd.setCode("Cate1");
+        }else{
+            String code=categoryRepository.getTop1().getCode();
+            categoryAdd.setCode(code.substring(0,4)+((Integer.parseInt(code.substring(4)))+1));
+        }
         categoryAdd.setName(categoryRequest.getName());
         categoryAdd.setStatus(categoryRequest.getStatus());
         categoryAdd.setCreated_at(new Date());

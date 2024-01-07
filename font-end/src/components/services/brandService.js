@@ -2,11 +2,16 @@ import axios from "axios";
 
 
 class BrandService{
+
+    getAll=()=>{
+        return axios.get(`http://localhost:8080/brand/list`)
+    }
+
     addCategory=(brandRequest)=>{
         return axios.post(`http://localhost:8080/brand/add`,brandRequest);
     }
 
-    getAll=(page)=>{
+    getAllPaging=(page)=>{
         return axios.get(`http://localhost:8080/brand/list/${page}`);
     }
 

@@ -2,11 +2,15 @@ import axios from "axios";
 
 class CategoryService{
 
+    getAll=()=>{
+        return axios.get(`http://localhost:8080/category/list`)
+    }
+
     addCategory=(categoryRequest)=>{
         return axios.post(`http://localhost:8080/category/add`,categoryRequest);
     }
 
-    getAll=(page)=>{
+    getAllPaging=(page)=>{
         return axios.get(`http://localhost:8080/category/list/${page}`);
     }
 

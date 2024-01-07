@@ -6,6 +6,44 @@
     border: 1px solid #da601a;
     border-radius: 5px;
 }
+.activeVariant{
+    @apply bg-primary-blue text-[#fff] hover:opacity-[0.8]
+}
+.styleSizeItem{
+    @apply relative mx-[10px] cursor-pointer w-[35px] text-center h-full border-[1px] border-[#999] rounded-[5px]
+}
+tr td{
+    height: 50px;
+    border-bottom: 1px solid #999999;
+}
+
+.list_image{
+    position: relative;
+    overflow: hidden;
+}
+.overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    border-radius: 5px;
+}
+.overlay i{
+    color: #fff;
+    font-size: 18px;
+    text-align: center;
+}
+
+.list_image:hover .overlay {
+    opacity: 1;
+}
 
 
 @keyframes showModal {

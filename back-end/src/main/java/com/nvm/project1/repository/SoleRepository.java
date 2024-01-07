@@ -11,6 +11,14 @@ import java.util.List;
 
 @Repository
 public interface SoleRepository extends JpaRepository<Sole,Long> {
+
+
+    @Query("""
+            select new com.nvm.project1.response.SoleResponse(s.id,s.name,s.updated_at,s.status) from Sole s order by s.id desc
+            """)
+    List<SoleResponse> getAll();
+
+
     @Query("""
             select new com.nvm.project1.response.SoleResponse(s.id,s.name,s.updated_at,s.status) from Sole s order by s.id desc
             """)

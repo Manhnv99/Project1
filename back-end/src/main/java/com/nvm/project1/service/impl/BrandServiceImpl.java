@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -18,6 +19,10 @@ public class BrandServiceImpl implements BrandService {
     @Autowired
     private BrandRepository brandRepository;
 
+    @Override
+    public List<BrandResponse> getAll() {
+        return brandRepository.getAll();
+    }
 
     @Override
     public BrandResponse add(BrandRequest brandRequest) {

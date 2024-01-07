@@ -28,7 +28,6 @@ public class Product {
 
 
     @ManyToOne
-    @MapsId("id")
     @JoinColumn(name = "brand_id", referencedColumnName = "id")
     private Brand brand;
 

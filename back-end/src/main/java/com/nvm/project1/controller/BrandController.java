@@ -18,6 +18,11 @@ public class BrandController {
     @Autowired
     private BrandService brandService;
 
+    @GetMapping("/list")
+    public ResponseEntity<?> getAll(){
+        return ResponseEntity.status(HttpStatus.OK).body(brandService.getAll());
+    }
+
     @PostMapping("/add")
     public ResponseEntity<?> add(@RequestBody BrandRequest brandRequest){
         return ResponseEntity.status(HttpStatus.CREATED).body(brandService.add(brandRequest));

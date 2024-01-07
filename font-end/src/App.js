@@ -14,6 +14,8 @@ import AddNhanVien from "./components/pages/maincontent/taikhoan/AddNhanVien";
 import {Toastmessage} from "./components/pages/maincontent/toastmessage/toastmessage";
 import UpdateNhanVien from "./components/pages/maincontent/taikhoan/UpdateNhanVien";
 import DetailNhanVien from "./components/pages/maincontent/taikhoan/DetailNhanVien";
+import AddSanPham from "./components/pages/maincontent/sanpham/AddSanPham";
+import AddModalSize from "./components/pages/maincontent/sanpham/modal/AddModalSize";
 
 
 
@@ -32,6 +34,7 @@ function App() {
                         <Routes>
                             <Route path="/" element={<ThongKe/>}/>
                             <Route path="/sanpham-management" element={<SanPham/>}/>
+                            <Route path="/create-sanpham-management" element={<AddSanPham/>}/>
                             <Route path="/theloai-management" element={<TheLoai/>}/>
                             <Route path="/degiay-management" element={<DeGiay/>}/>
                             <Route path="/thuonghieu-management" element={<ThuongHieu/>}/>

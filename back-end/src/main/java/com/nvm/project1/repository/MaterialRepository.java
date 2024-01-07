@@ -17,6 +17,12 @@ public interface MaterialRepository extends JpaRepository<Material,Long> {
     @Query("""
             select new com.nvm.project1.response.MaterialResponse(m.id,m.name,m.updated_at,m.status) from Material m order by m.id desc
             """)
+    List<MaterialResponse> getAll();
+
+
+    @Query("""
+            select new com.nvm.project1.response.MaterialResponse(m.id,m.name,m.updated_at,m.status) from Material m order by m.id desc
+            """)
     List<MaterialResponse> getAllPaging(Pageable pageable);
 
 

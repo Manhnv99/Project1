@@ -2,11 +2,16 @@ import axios from "axios";
 
 
 class SoleService{
+
+    getAll=()=>{
+        return axios.get(`http://localhost:8080/sole/list`)
+    }
+
     addCategory=(soleRequest)=>{
         return axios.post(`http://localhost:8080/sole/add`,soleRequest);
     }
 
-    getAll=(page)=>{
+    getAllPaging=(page)=>{
         return axios.get(`http://localhost:8080/sole/list/${page}`);
     }
 

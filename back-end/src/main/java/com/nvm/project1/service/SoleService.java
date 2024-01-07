@@ -8,6 +8,8 @@ import java.util.List;
 
 public interface SoleService {
 
+    List<SoleResponse> getAll();
+
     SoleResponse add(SoleRequest soleRequest);
 
     List<SoleResponse> getAllPaging(Pageable pageable);

@@ -8,6 +8,8 @@ import java.util.List;
 
 public interface MaterialService {
 
+    List<MaterialResponse> getAll();
+
     MaterialResponse add(MaterialRequest materialRequest);
 
     List<MaterialResponse> getAllPaging(Pageable pageable);

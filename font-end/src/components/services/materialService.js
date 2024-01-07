@@ -2,11 +2,16 @@ import axios from "axios";
 
 
 class MaterialService{
+
+    getAll=()=>{
+        return axios.get(`http://localhost:8080/material/list`)
+    }
+
     addCategory=(materialRequest)=>{
         return axios.post(`http://localhost:8080/material/add`,materialRequest);
     }
 
-    getAll=(page)=>{
+    getAllPaging=(page)=>{
         return axios.get(`http://localhost:8080/material/list/${page}`);
     }
 
