@@ -36,6 +36,8 @@ public class ProductDetail {
 
     private Boolean status;
 
+    private String image;
+
 
     @Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     @Temporal(TemporalType.TIMESTAMP)

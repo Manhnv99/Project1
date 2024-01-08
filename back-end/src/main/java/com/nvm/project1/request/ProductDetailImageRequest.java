@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class ProductDetailImageRequest {
+
     private Long productDetail_id;
 
     private String image;

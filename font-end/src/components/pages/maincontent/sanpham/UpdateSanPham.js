@@ -1,21 +1,14 @@
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
-import productDetailService from "../../../services/productDetailService";
 
 
-const SanPham = () => {
-
+const UpdateSanPham = () => {
     const nav=useNavigate();
-    const [listProduct,setListProduct]=useState([])
-
+    const {id}=useParams();
 
 
     useEffect(() => {
-        productDetailService.getAll().then(res=>{
-            setListProduct(res.data)
-        }).catch(e=>{
-            console.log(e)
-        })
+
     }, []);
 
 
@@ -25,7 +18,7 @@ const SanPham = () => {
                 <div className="p-[20px]">
                     <div className="title mb-[20px]">
                         <i className="fa-solid fa-box-open text-[25px]"></i>
-                        <span className="text-[22px] font-bold ml-[10px]">Quản lý sản phẩm</span>
+                        <span className="text-[22px] font-bold ml-[10px]">Quản lý sản phẩm chi tiết</span>
                     </div>
                     <div className="bg-[#fff] rounded-[5px]">
                         <div className="p-[10px]">
@@ -67,17 +60,23 @@ const SanPham = () => {
                             <div className="mb-[20px] flex justify-between">
                                 <div className="">
                                     <i className="fa-solid fa-list text-[25px]"></i>
-                                    <span className="text-[17px] font-[500] ml-[5px]">Danh sách sản phẩm</span>
+                                    <span className="text-[17px] font-[500] ml-[5px]">Danh sách sản phẩm chi tiết</span>
                                 </div>
                                 <div>
-                                    <button onClick={()=>{nav("/create-sanpham-management")}} className="hover:opacity-[0.8] ease-in-out duration-[0.5s] text-[#fff] bg-[#1578ff] py-[7px] px-[20px] rounded-[7px]">
-                                        <i className="fa-solid fa-plus text-[12px]"></i>
-                                        <span className="text-[15px] ml-[5px]">Thêm</span>
+                                    <button className="hover:opacity-[0.8] ease-in-out duration-[0.5s] text-[#fff] bg-primary-blue py-[7px] px-[20px] rounded-[7px]">
+                                        <span className="text-[15px] ml-[5px]">Chỉnh số lượng và giá chung </span>
+                                    </button>
+                                    <button
+                                            className="ml-[20px] hover:opacity-[0.8] ease-in-out duration-[0.5s] text-[#fff] bg-primary-blue py-[7px] px-[20px] rounded-[7px]">
+                                        <div className="flex items-center">
+                                            <i className="fa-regular fa-pen-to-square text-[15px]"></i>
+                                            <span className="text-[15px] ml-[5px]">Update sản phẩm</span>
+                                        </div>
                                     </button>
                                 </div>
                             </div>
                             <div>
-                                <table className="w-full text-[14px]">
+                            <table className="w-full text-[14px]">
                                     <thead>
                                     <tr className="bg-primary-orange text-[#fff] text-[13px] font-[400]">
                                         <th className="w-1/12 border-r-[1px] border-solid border-[#fff] py-[10px]">STT</th>
@@ -94,24 +93,18 @@ const SanPham = () => {
                                     </tr>
                                     </thead>
                                     <tbody className="">
-                                    {listProduct.map((item, index) => {
-                                        return (
-                                            <>
-                                                <tr className="">
-                                                    <td className="text-center px-4 py-[15px]">{index + 1}</td>
-                                                    <td className=" px-4 py-[10px]">{item.code}</td>
-                                                    <td className="text-center px-4 py-[15px]">{item.name}</td>
-                                                    <td className="text-center px-4 py-[15px]">
-                                                        {item.quantity}
-                                                    </td>
-                                                    <td className="text-center px-4 py-[15px]">
-                                                        <i className="hover:opacity-[0.8] ease-in-out duration-[0.5s] fa-regular fa-eye py-[7px] px-[12px] rounded-[5px] bg-[#e48902] text-[#fff] cursor-pointer"></i>
-                                                        <i onClick={()=>{nav(`/update-sanpham-management/${item.id}`)}} className="hover:opacity-[0.8] ease-in-out duration-[0.5s] fa-regular fa-pen-to-square py-[7px] px-[12px] rounded-[5px] bg-[#0189e5] text-[#fff] cursor-pointer ml-[7px]"></i>
-                                                    </td>
-                                                </tr>
-                                            </>
-                                        )
-                                    })}
+                                    <tr className="">
+                                        <td className="text-center px-4 py-[15px]">1</td>
+                                        <td className=" px-4 py-[10px]">1</td>
+                                        <td className="text-center px-4 py-[15px]">1</td>
+                                        <td className="text-center px-4 py-[15px]">
+                                            1
+                                        </td>
+                                        <td className="text-center px-4 py-[15px]">
+                                            <i className="hover:opacity-[0.8] ease-in-out duration-[0.5s] fa-regular fa-eye py-[7px] px-[12px] rounded-[5px] bg-[#e48902] text-[#fff] cursor-pointer"></i>
+                                            <i className="hover:opacity-[0.8] ease-in-out duration-[0.5s] fa-regular fa-pen-to-square py-[7px] px-[12px] rounded-[5px] bg-[#0189e5] text-[#fff] cursor-pointer ml-[7px]"></i>
+                                        </td>
+                                    </tr>
                                     </tbody>
                                 </table>
                                 <div className="flex justify-between py-[20px] px-[20px]">
@@ -133,4 +126,4 @@ const SanPham = () => {
         </>
     )
 }
-export default SanPham
+export default UpdateSanPham

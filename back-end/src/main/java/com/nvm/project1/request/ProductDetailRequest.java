@@ -21,4 +21,6 @@ public class ProductDetailRequest {
 
     private Boolean status;
 
+    private String image;
+
 }

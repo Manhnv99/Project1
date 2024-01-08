@@ -57,7 +57,7 @@ const ChatLieu = () => {
                         status: status === 'false' ? false : true,
                     }
                     await materialService.addCategory(materialRequest).then(res=>{
-                        console.log(res.data)
+
                     }).catch(e=>{
                         console.log(e)
                     })
@@ -249,7 +249,7 @@ const ChatLieu = () => {
         let namevld=document.querySelector('.namevld')
         let inputName=document.querySelector('.name');
         if(name===''){
-            namevld.innerHTML='Chưa điền thể loại!'
+            namevld.innerHTML='Chưa điền chất liệu!'
             inputName.style.outline= 'solid #fe4847 1px'
             inputName.style.border='#fe4847'
             count++;
@@ -340,7 +340,7 @@ const ChatLieu = () => {
                             <div className="mb-[20px] flex justify-between">
                                 <div className="">
                                     <i className="fa-solid fa-list text-[25px]"></i>
-                                    <span className="text-[17px] font-[500] ml-[5px]">Danh sách thể loại</span>
+                                    <span className="text-[17px] font-[500] ml-[5px]">Danh sách chất liệu</span>
                                 </div>
                                 <div>
                                     <button className="hover:opacity-[0.8] ease-in-out duration-[0.5s] text-[#fff] bg-[#1578ff] py-[7px] px-[20px] rounded-[7px]"

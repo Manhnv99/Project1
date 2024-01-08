@@ -115,7 +115,7 @@ const ModalChangeGeneral=(props)=>{
                             </div>
                             <div>
                                 <button onClick={handleChangeGeneral}
-                                        className="hover:opacity-[0.8] ease-in-out duration-[0.5s] bg-[#1677ff] py-[5px] px-[25px] rounded-[7px]">Thêm
+                                        className="hover:opacity-[0.8] ease-in-out duration-[0.5s] bg-[#1677ff] py-[5px] px-[25px] rounded-[7px]">Cập nhật
                                 </button>
                                 <button onClick={handleCloseModalChangeGeneral} className="hover:opacity-[0.8] ease-in-out duration-[0.5s] bg-primary-red py-[5px] px-[20px] rounded-[7px] ml-[10px]">Hủy
                                 </button>

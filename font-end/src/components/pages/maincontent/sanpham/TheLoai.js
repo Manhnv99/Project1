@@ -57,7 +57,7 @@ const TheLoai = () => {
                         status: status === 'false' ? false : true,
                     }
                     await categoryService.addCategory(categoryRequest).then(res=>{
-                        console.log(res.data)
+
                     }).catch(e=>{
                         console.log(e)
                     })

@@ -56,7 +56,7 @@ const DeGiay = () => {
                         status: status === 'false' ? false : true,
                     }
                     await soleService.addCategory(soleRequest).then(res=>{
-                        console.log(res.data)
+
                     }).catch(e=>{
                         console.log(e)
                     })

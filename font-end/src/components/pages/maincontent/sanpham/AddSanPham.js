@@ -12,10 +12,14 @@ import productDetailService from "../../../services/productDetailService";
 import {Context} from "../../../provider/provider";
 import ModalChangeGeneral from "./modal/ModalChangeGeneral";
 import ModalDetailImage from "./modal/ModalDetailImage";
+import productImageService from "../../../services/ProductImageService";
+import {useNavigate} from "react-router-dom";
+import Loading from "../loading/loading";
 
 
 const AddSanPham=()=>{
     const value=useContext(Context)
+    const nav=useNavigate()
     const [name,setName]=useState('')
     const [description,setDescription]=useState('')
     const [idBrand,setIdBrand] =useState('')
@@ -43,6 +47,11 @@ const AddSanPham=()=>{
     const [openModalChangeGeneral,setOpenModalChangeGeneral]=useState(false)
     const [listChangeGeneral,setListChangeGeneral]=useState([])
     const [changeDone,setChangeDone]=useState(false)
+    const [loading,setLoading]=useState(false)
+
+
+
+
 
 
     useEffect(() => {
@@ -90,35 +99,55 @@ const AddSanPham=()=>{
         setChangeDone(false)
     },[changeDone])
 
-    const handleAddProduct= async ()=>{
-        const productRequest={
-            name:name,
-            gender:gender==='false' ? false : true,
-            description:description,
-            brand_id:idBrand,
-            material_id:idMaterial,
-            sole_id:idSole,
-            category_id:idCategory
-        }
-        productService.add(productRequest).then(res=>{
-            console.log(res.data)
-            for(let i=0;i<productShow.length;i++){
-                const productDetailRequest={
-                    quantity:parseInt(productShow[i].quantity),
-                    price:parseFloat(productShow[i].price),
-                    product_id:res.data.id,
-                    size_name:productShow[i].size_name,
-                    color_code:productShow[i].color_code,
-                    status:status==='false'?false:true
-                }
-                console.log(productDetailRequest)
-                productDetailService.add(productDetailRequest).catch(e=>{
-                    console.log(e)
-                })
+    const handleAddProduct= ()=>{
+        setLoading(true)
+        setTimeout(async ()=>{
+            const productRequest={
+                name:name,
+                gender:gender==='false' ? false : true,
+                description:description,
+                brand_id:idBrand,
+                material_id:idMaterial,
+                sole_id:idSole,
+                category_id:idCategory
             }
-        }).catch(e=>{
-            console.log(e)
-        })
+            await productService.add(productRequest).then(res=>{
+                for(let i=0;i<productShow.length;i++){
+                    const listImageForColor1= selectedImages.filter((item=>item.color===productShow[i].color_code))
+                    const productDetailRequest={
+                        quantity:parseInt(productShow[i].quantity),
+                        price:parseFloat(productShow[i].price),
+                        product_id:res.data.id,
+                        size_name:productShow[i].size_name,
+                        color_code:productShow[i].color_code,
+                        status:status==='false'?false:true,
+                        image:listImageForColor1[0].file.name
+                    }
+                     productDetailService.add(productDetailRequest).then(res=>{
+                        const listImageForColor= selectedImages.filter((item=>item.color===res.data.color_code))
+                        for(let j=0;j<listImageForColor.length;j++){
+                            const productDetailImageRequest={
+                                productDetail_id:res.data.id,
+                                image:listImageForColor[j].file.name
+                            }
+                            //addProductDetailImage
+                            productImageService.addProductImage(productDetailImageRequest).catch(e=>{console.log(e)})
+                            //lưu trữ ảnh lên server
+                            const formData=new FormData()
+                            formData.append('file',listImageForColor[j].file)
+                            productImageService.uploadProductImage(formData).catch(e=>console.log(e))
+                        }
+                    }).catch(e=>{
+                        console.log(e)
+                    })
+                }
+            }).catch(e=>{
+                console.log(e)
+            })
+            await nav("/sanpham-management")
+            await value.showToastMessage("Thêm Sản Phẩm Thành Công!")
+            await setLoading(false)
+        },2000)
     }
 
     const validateShowProduct=()=>{
@@ -376,17 +405,10 @@ const AddSanPham=()=>{
         setOpenModalChangeGeneral(false)
     }
 
-    const test=()=>{
-        // console.log(listChangeGeneral)
-        console.log(productShow)
-        // console.log(listColor)
-        // console.log(selectedImages)
-        // console.log(selectedImages)
-    }
 
     return (
         <>
-            <button onClick={test}>Test</button>
+            {loading && <Loading/>}
             {openAddColor &&
                 <AddModalColor handleCloseAddColor={handleCloseAddColor} showColorChoosed={showColorChoosed}/>}
             {openAddSize && <AddModalSize handleCloseAddSize={handleCloseAddSize} showSizeChoosed={showSizeChoosed}/>}

@@ -220,8 +220,6 @@ const AddNhanVien = () => {
         setNgaySinh(myBirthDay)
     }
 
-
-
     return (
         <>
             {showQRCode && <QRScan handleCloseScanQRCode={handleCloseScanQRCode} getDataQR={getDataQR}/>}

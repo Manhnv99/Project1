@@ -16,6 +16,7 @@ import UpdateNhanVien from "./components/pages/maincontent/taikhoan/UpdateNhanVi
 import DetailNhanVien from "./components/pages/maincontent/taikhoan/DetailNhanVien";
 import AddSanPham from "./components/pages/maincontent/sanpham/AddSanPham";
 import AddModalSize from "./components/pages/maincontent/sanpham/modal/AddModalSize";
+import UpdateSanPham from "./components/pages/maincontent/sanpham/UpdateSanPham";
 
 
 
@@ -35,6 +36,7 @@ function App() {
                             <Route path="/" element={<ThongKe/>}/>
                             <Route path="/sanpham-management" element={<SanPham/>}/>
                             <Route path="/create-sanpham-management" element={<AddSanPham/>}/>
+                            <Route path="/update-sanpham-management/:id" element={<UpdateSanPham/>}/>
                             <Route path="/theloai-management" element={<TheLoai/>}/>
                             <Route path="/degiay-management" element={<DeGiay/>}/>
                             <Route path="/thuonghieu-management" element={<ThuongHieu/>}/>
@@ -42,7 +44,7 @@ function App() {
                             <Route path="/nhanvien-management" element={<NhanVien/>}/>
                             <Route path="/add-nhanvien-management" element={<AddNhanVien/>}/>
                             <Route path="/update-nhanvien-management/:id" element={<UpdateNhanVien/>}/>
-                            <Route path={"/detail-nhanvien-management/:id"} element={<DetailNhanVien/>}/>
+                            <Route path="/detail-nhanvien-management/:id" element={<DetailNhanVien/>}/>
                             <Route path="/khachhang-management" element={<KhachHang/>}/>
                         </Routes>
                     </div>

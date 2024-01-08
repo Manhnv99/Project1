@@ -8,6 +8,11 @@ class ProductDetailService{
     }
 
 
+    getAll=()=>{
+        return axios.get(`http://localhost:8080/productdetail/list`)
+    }
+
+
 }
 
 export default new ProductDetailService()

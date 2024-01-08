@@ -20,4 +20,10 @@ public class ProductDetailController {
     public ResponseEntity<?> add(@RequestBody ProductDetailRequest productDetailRequest){
         return ResponseEntity.status(HttpStatus.CREATED).body(productDetailService.add(productDetailRequest));
     }
+
+
+    @GetMapping("/list")
+    public ResponseEntity<?> getAll(){
+        return ResponseEntity.status(HttpStatus.OK).body(productDetailService.getAll());
+    }
 }

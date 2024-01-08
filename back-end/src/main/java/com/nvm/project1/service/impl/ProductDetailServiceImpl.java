@@ -6,12 +6,14 @@ import com.nvm.project1.repository.ProductDetailRepository;
 import com.nvm.project1.repository.ProductRepository;
 import com.nvm.project1.repository.SizeRepository;
 import com.nvm.project1.request.ProductDetailRequest;
+import com.nvm.project1.response.ListProductDetailResponse;
 import com.nvm.project1.response.ProductDetailResponse;
 import com.nvm.project1.service.ProductDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class ProductDetailServiceImpl implements ProductDetailService {
@@ -39,11 +41,17 @@ public class ProductDetailServiceImpl implements ProductDetailService {
         productDetailAdd.setSize(sizeRepository.getSizeByCode(productDetailRequest.getSize_name()));
         productDetailAdd.setColor(colorRepository.getColorByCode(productDetailRequest.getColor_code()));
         productDetailAdd.setStatus(productDetailRequest.getStatus());
+        productDetailAdd.setImage(productDetailRequest.getImage());
         productDetailAdd.setCreated_at(new Date());
         productDetailAdd.setUpdated_at(new Date());
         productDetailAdd.setCreated_by(Long.valueOf(1));
         productDetailAdd.setUpdated_by(Long.valueOf(1));
         ProductDetail productDetail=productDetailRepository.save(productDetailAdd);
-        return new ProductDetailResponse(productDetail.getId());
+        return new ProductDetailResponse(productDetail.getId(),productDetail.getColor().getCode());
+    }
+
+    @Override
+    public List<ListProductDetailResponse> getAll() {
+        return productDetailRepository.getAll();
     }
 }

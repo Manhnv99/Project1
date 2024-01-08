@@ -34,7 +34,7 @@ public class StaffController {
     public ResponseEntity<?> hanldeFileUpload(@RequestPart("file") MultipartFile multipartFile) throws Exception {
         try {
             String fileName= StringUtils.cleanPath(multipartFile.getOriginalFilename());
-            FileUpload.saveFile(fileName,multipartFile);
+            FileUpload.saveFileStaff(fileName,multipartFile);
             return ResponseEntity.status(HttpStatus.OK).body("sucsess");
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error uploading file");

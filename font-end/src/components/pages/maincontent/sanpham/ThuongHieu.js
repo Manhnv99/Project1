@@ -57,7 +57,7 @@ const ThuongHieu = () => {
                         status: status === 'false' ? false : true,
                     }
                     await brandService.addCategory(brandRequest).then(res=>{
-                        console.log(res.data)
+
                     }).catch(e=>{
                         console.log(e)
                     })
