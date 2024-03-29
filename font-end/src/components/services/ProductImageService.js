@@ -14,6 +14,21 @@ class ProductImageService{
             }
         })
     }
+
+    getListProductDetail=(id)=>{
+        return axios.get(`http://localhost:8080/product-detail-image/list/${id}`)
+    }
+
+
+    getProductDetail=(id)=>{
+        return axios.get(`http://localhost:8080/product-detail-image/detail/${id}`)
+    }
+
+
+    getListImage=(id)=>{
+        return axios.get(`http://localhost:8080/product-detail-image/listImage/${id}`)
+    }
+
 }
 
 export default new ProductImageService()

@@ -1,4 +1,5 @@
-package com.nvm.project1.response;
+package com.nvm.project1.request;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,35 +8,17 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class ListProductDetailImageResponse {
-
-    private Long productDetail_id;
-
+public class ProductDetailUpdateRequest {
     private String name;
-
     private String description;
-
     private String brand_name;
-
     private String material_name;
-
-    private String sole_name;
-
-    private String category_name;
-
-    private Long quantity;
-
-    private Double price;
-
-    private String size;
-
-    private String color_name;
-
-    private Boolean status;
-
     private Boolean gender;
-
-    private String image;
-
-
+    private String color_name;
+    private Long quantity;
+    private Boolean status;
+    private String sole_name;
+    private String category_name;
+    private String size_name;
+    private Double price;
 }

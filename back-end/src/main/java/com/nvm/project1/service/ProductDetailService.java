@@ -11,4 +11,8 @@ public interface ProductDetailService {
     ProductDetailResponse add(ProductDetailRequest productDetailRequest);
 
     List<ListProductDetailResponse> getAll();
+
+    void updatePriceandQuantityById(Long id,Double price,Long quantity);
+
+
 }

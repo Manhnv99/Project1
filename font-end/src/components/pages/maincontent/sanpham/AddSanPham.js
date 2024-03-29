@@ -111,10 +111,11 @@ const AddSanPham=()=>{
                 sole_id:idSole,
                 category_id:idCategory
             }
+            //add product
             await productService.add(productRequest).then(res=>{
                 for(let i=0;i<productShow.length;i++){
                     const listImageForColor1= selectedImages.filter((item=>item.color===productShow[i].color_code))
-                    const productDetailRequest={
+                    let productDetailRequest={
                         quantity:parseInt(productShow[i].quantity),
                         price:parseFloat(productShow[i].price),
                         product_id:res.data.id,
@@ -123,31 +124,40 @@ const AddSanPham=()=>{
                         status:status==='false'?false:true,
                         image:listImageForColor1[0].file.name
                     }
-                     productDetailService.add(productDetailRequest).then(res=>{
-                        const listImageForColor= selectedImages.filter((item=>item.color===res.data.color_code))
-                        for(let j=0;j<listImageForColor.length;j++){
-                            const productDetailImageRequest={
-                                productDetail_id:res.data.id,
-                                image:listImageForColor[j].file.name
-                            }
-                            //addProductDetailImage
-                            productImageService.addProductImage(productDetailImageRequest).catch(e=>{console.log(e)})
-                            //lưu trữ ảnh lên server
-                            const formData=new FormData()
-                            formData.append('file',listImageForColor[j].file)
-                            productImageService.uploadProductImage(formData).catch(e=>console.log(e))
-                        }
-                    }).catch(e=>{
-                        console.log(e)
-                    })
+                    addProductDetail(productDetailRequest)
                 }
             }).catch(e=>{
                 console.log(e)
             })
-            await nav("/sanpham-management")
-            await value.showToastMessage("Thêm Sản Phẩm Thành Công!")
-            await setLoading(false)
+            await redirect();
         },2000)
+    }
+    //add product detail
+    const addProductDetail=(productDetailRequest)=>{
+        productDetailService.add(productDetailRequest).then(res=>{
+            const data=res.data
+            const listImageForColor= selectedImages.filter((item=>item.color===data.color_code))
+            for(let j=0;j<listImageForColor.length;j++){
+                const productDetailImageRequest={
+                    productDetail_id:data.id,
+                    image:listImageForColor[j].file.name
+                }
+                //addProductDetailImage
+                productImageService.addProductImage(productDetailImageRequest).catch(e=>{console.log(e)})
+                //lưu trữ ảnh lên server
+                const formData=new FormData()
+                formData.append('file',listImageForColor[j].file)
+                productImageService.uploadProductImage(formData).catch(e=>console.log(e))
+            }
+        }).catch(e=>{
+            console.log(e)
+        })
+    }
+    //chuyển sang màn sản pham
+    const redirect=async ()=>{
+        await setLoading(false)
+        await nav("/sanpham-management")
+        await value.showToastMessage("Thêm Sản Phẩm Thành Công!")
     }
 
     const validateShowProduct=()=>{
@@ -415,7 +425,7 @@ const AddSanPham=()=>{
             {openEntityModal && <AddModalEntity handleCloseModal={handleCloseModal} whatActionEntity={whatActionEntity}
                                                 addListEntity={addListEntity}/>}
             {openModalDetailImage && <ModalDetailImage handleCloseModalDetailImage={handleCloseModalDetailImage} detailImage={detailImage}/>}
-            {openModalChangeGeneral && <ModalChangeGeneral handleCloseModalChangeGeneral={handleCloseModalChangeGeneral} listChangeGeneral={listChangeGeneral} productShow={productShow} setProductShow={setProductShow} setChangeDone={setChangeDone}/>}
+            {openModalChangeGeneral && <ModalChangeGeneral whatAction={"add"}  handleCloseModalChangeGeneral={handleCloseModalChangeGeneral} listChangeGeneral={listChangeGeneral} productShow={productShow} setProductShow={setProductShow} setChangeDone={setChangeDone}/>}
             <div>
                 <div className="p-[20px]">
                     {/*Thêm Sản Phẩm*/}
@@ -649,7 +659,7 @@ const AddSanPham=()=>{
                             {/*Table*/}
                             <table className="w-full text-[14px]">
                                 <thead>
-                                <tr className="bg-primary-orange text-[#fff] text-[13px] font-[400]">
+                                <tr className="text-center bg-primary-orange text-[#fff] text-[13px] font-[400]">
                                     <th className="w-1/12 border-r-[1px] border-solid border-[#fff] py-[10px]">
                                         <div className="flex justify-center ">
                                             <input type="checkbox"/>

@@ -16,8 +16,6 @@ const AddModalEntity=(props)=>{
 
 
 
-
-
     useEffect(() => {
         const inputName=document.querySelector('.name')
         const titleName=document.querySelector('.titleName')
@@ -168,7 +166,7 @@ const AddModalEntity=(props)=>{
         <>
             {loading && <Loading/>}
             {/*Modal*/}
-            <div className="modal fixed bottom-0 top-0 left-0 right-0 z-2 bg-[rgba(0,0,0,0.4)]">
+            <div className="modal fixed bottom-0 top-0 left-0 right-0 z-[3] bg-[rgba(0,0,0,0.4)]">
                 <div className="flex justify-center items-center h-full">
                     <div className="modal-container p-[20px] bg-[#fff] rounded-[5px]">
                         <div className="flex justify-between">

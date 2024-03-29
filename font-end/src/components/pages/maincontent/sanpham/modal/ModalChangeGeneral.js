@@ -1,6 +1,8 @@
 import {useContext, useState} from "react";
 import {Context} from "../../../../provider/provider";
 import Loading from "../../loading/loading";
+import productDetailService from "../../../../services/productDetailService";
+import productImageService from "../../../../services/ProductImageService";
 
 
 const ModalChangeGeneral=(props)=>{
@@ -12,30 +14,55 @@ const ModalChangeGeneral=(props)=>{
 
     const handleChangeGeneral=()=>{
         if(validate()===0){
-            setLoading(true)
-            setTimeout(()=>{
-                const listChange=props.listChangeGeneral.map((item)=>{
-                    return props.productShow.filter(product=>product.unique===item)
-                })
-                let myarray=[]
-                for(let i=0;i<listChange.length;i++){
-                    listChange[i][0].price=price;
-                    listChange[i][0].quantity=quantity;
-                    myarray.push(listChange[i][0])
-                }
-                let productShow=[...props.productShow]
-                for(let i=0;i<props.productShow;i++){
-                    for(let j=0;j<myarray.length;j++){
-                        if(productShow.unique===myarray[j].unique){
-                            productShow.splice(productShow.unique,1,myarray[j])
+            if(props.whatAction==='add'){
+                setLoading(true)
+                setTimeout(()=>{
+                    const listChange=props.listChangeGeneral.map((item)=>{
+                        return props.productShow.filter(product=>product.unique===item)
+                    })
+                    let myarray=[]
+                    for(let i=0;i<listChange.length;i++){
+                        listChange[i][0].price=price;
+                        listChange[i][0].quantity=quantity;
+                        myarray.push(listChange[i][0])
+                    }
+                    let productShow=[...props.productShow]
+                    for(let i=0;i<props.productShow;i++){
+                        for(let j=0;j<myarray.length;j++){
+                            if(productShow.unique===myarray[j].unique){
+                                productShow.splice(productShow.unique,1,myarray[j])
+                            }
                         }
                     }
-                }
-                props.setProductShow(productShow)
-                handleCloseModalChangeGeneral()
-                value.showToastMessage("Cập nhật số lượng và giá thành công!")
-                props.setChangeDone(true)
-            },1000)
+                    props.setProductShow(productShow)
+                    handleCloseModalChangeGeneral()
+                    value.showToastMessage("Cập nhật số lượng và giá thành công!")
+                    props.setChangeDone(true)
+                },1000)
+            }else{
+                setLoading(true)
+                setTimeout(async ()=>{
+                    const listId=props.listIdChangeGeneral;
+                    for(let i=0;i<listId.length;i++){
+                        const productDetailRequest={
+                            quantity:quantity,
+                            price:price,
+                            product_id:null,
+                            size_name:null,
+                            color_code:null,
+                            status:null,
+                            image:null
+                        }
+                        await productDetailService.updatePriceandQuantity(listId[i],productDetailRequest).catch(e=>{
+                            console.log(e)
+                        })
+                    }
+                    await props.callAPI();
+                    await handleCloseModalChangeGeneral()
+                    await value.showToastMessage("Cập nhật số lượng và giá thành công!")
+                    await props.setChangeDone(true)
+                },1000)
+            }
         }
     }
 
@@ -46,7 +73,11 @@ const ModalChangeGeneral=(props)=>{
         setTimeout(() => {
             modal.style.display = 'none'
             modal_container.style.animation = ''
-            props.handleCloseModalChangeGeneral()
+            if(props.whatAction==='add'){
+                props.handleCloseModalChangeGeneral()
+            }else{
+                props.handleCloseModalChangeGeneral()
+            }
         }, 500)
     }
 

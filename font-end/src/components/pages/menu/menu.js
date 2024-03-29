@@ -63,34 +63,33 @@ const Menu = () => {
     }
     return (
         <>
-            <div
-                className="fixed h-screen max-w-[16.666667%] border-[1px] border-solid border-black bg-[#001429] text-[12px]">
+            <div className="fixed h-screen w-2/12 border-[1px] border-solid border-black bg-[#001429] text-[12px]">
                 <div className="pt-[30px] px-[30px]">
                     <div className="mb-[20px]">
                         <img className="w-full object-fill rounded-[50%]"
                              src="/logo.png" alt=""/>
                     </div>
-                    <ul>
+                    <ul className="pl-[0px]">
                         <li className="py-[10px] menu-hover">
-                            <Link to="/" className="">
+                            <Link to="/">
                             <span className=""><i className="fa-solid fa-chart-line text-[#fff]"></i></span>
                                 <span className="text-[#999] ml-[10px]">Thống Kê</span>
                             </Link>
                         </li>
                         <li className="py-[10px] menu-hover">
-                            <Link to="/" className="">
+                            <Link to="/">
                                 <span className="text-[#fff]"><i className="fa-solid fa-shop"></i></span>
                                 <span className="text-[#999] ml-[10px]">Bán Hàng Tại Quầy</span>
                             </Link>
                         </li>
                         <li className="py-[10px] menu-hover">
-                            <Link to="/" className="">
+                            <Link to="/">
                                 <span className="text-[#fff]"><i className="fa-solid fa-money-bill-wave"></i></span>
                                 <span className="text-[#999] ml-[10px]">Quản Lý Hóa Đơn</span>
                             </Link>
                         </li>
                         <li className="py-[10px] menu-hover">
-                            <Link to="/" className="">
+                            <Link to="/">
                                 <span className="text-[#fff]"><i className="fa-solid fa-truck-fast"></i></span>
                                 <span className="text-[#999] ml-[10px]">Trả Hàng</span>
                             </Link>

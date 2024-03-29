@@ -26,4 +26,11 @@ public class ProductDetailController {
     public ResponseEntity<?> getAll(){
         return ResponseEntity.status(HttpStatus.OK).body(productDetailService.getAll());
     }
+
+
+    @PutMapping("/update-price-quantity/{id}")
+    public ResponseEntity<?> updatePriceandQuantityById(@PathVariable Long id,@RequestBody ProductDetailRequest productDetailRequest){
+        productDetailService.updatePriceandQuantityById(id,productDetailRequest.getPrice(),productDetailRequest.getQuantity());
+        return ResponseEntity.status(HttpStatus.OK).body("succeess");
+    }
 }

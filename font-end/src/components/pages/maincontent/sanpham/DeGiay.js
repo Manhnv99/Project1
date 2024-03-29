@@ -353,7 +353,7 @@ const DeGiay = () => {
                             <div>
                                 <table className="w-full text-[14px]">
                                     <thead>
-                                    <tr className="bg-primary-orange text-[#fff] text-[13px] font-[400]">
+                                    <tr className="text-center bg-primary-orange text-[#fff] text-[13px] font-[400]">
                                         <th className="w-1/12 border-r-[1px] border-solid border-[#fff] py-[10px]">STT</th>
                                         <th className="w-4/12 border-r-[1px] border-solid border-[#fff] py-[10px]">Tên
                                             đế giày

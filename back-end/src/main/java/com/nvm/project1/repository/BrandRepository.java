@@ -49,4 +49,11 @@ public interface BrandRepository extends JpaRepository<Brand,Long> {
             (b.status is null or b.status=:status)
             """)
     List<BrandResponse> findAllTotalPage(String name,Boolean status);
+
+
+
+    @Query("""
+            select b from Brand b where b.name=:name
+            """)
+    Brand getBrandByName(String name);
 }

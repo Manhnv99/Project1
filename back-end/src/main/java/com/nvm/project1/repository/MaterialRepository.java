@@ -50,4 +50,10 @@ public interface MaterialRepository extends JpaRepository<Material,Long> {
             (m.status is null or m.status=:status)
             """)
     List<MaterialResponse> findAllTotalPage(String name,Boolean status);
+
+
+    @Query("""
+            select m from Material m where m.name=:name
+            """)
+    Material getMaterialByName(String name);
 }

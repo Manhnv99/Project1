@@ -27,4 +27,10 @@ public interface ColorRepository extends JpaRepository<Color,Long> {
             select * from color where color.code=:code limit 1
             """,nativeQuery = true)
     Color getColorByCode(String code);
+
+
+    @Query("""
+            select c from Color c where c.name=:name
+            """)
+    Color getColorByName(String name);
 }

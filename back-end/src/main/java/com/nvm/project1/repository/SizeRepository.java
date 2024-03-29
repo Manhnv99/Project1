@@ -27,4 +27,9 @@ public interface SizeRepository extends JpaRepository<Size,Long> {
             """,nativeQuery = true)
     Size getSizeByCode(String name);
 
+
+    @Query("""
+            select s from Size s where s.name=:name
+            """)
+    Size getSizeByName(String name);
 }

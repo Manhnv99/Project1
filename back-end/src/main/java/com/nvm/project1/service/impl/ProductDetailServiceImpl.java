@@ -54,4 +54,12 @@ public class ProductDetailServiceImpl implements ProductDetailService {
     public List<ListProductDetailResponse> getAll() {
         return productDetailRepository.getAll();
     }
+
+    @Override
+    public void updatePriceandQuantityById(Long id, Double price, Long quantity) {
+        ProductDetail productDetail=productDetailRepository.getReferenceById(id);
+        productDetail.setPrice(price);
+        productDetail.setQuantity(quantity);
+        productDetailRepository.save(productDetail);
+    }
 }

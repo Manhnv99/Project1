@@ -52,4 +52,10 @@ public interface SoleRepository extends JpaRepository<Sole,Long> {
             """)
     List<SoleResponse> findAllTotalPage(String name,Boolean status);
 
+
+    @Query("""
+            select s from Sole s where s.name=:name
+            """)
+    Sole getSoleByName(String name);
+
 }

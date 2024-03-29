@@ -144,13 +144,14 @@ const AddModalColor=(props)=>{
             if(validate(code,name)===0){
                 setLoading(true)
                 setTimeout(async ()=>{
-                    const sizeRequest={
+                    const colorRequest={
                         code:code,
                         name:name,
                         status: status === 'false' ? false : true
                     }
-                    await colorService.addColor(sizeRequest).then(res=>{
+                    await colorService.addColor(colorRequest).then(res=>{
                         setListColor([...listColor,res.data])
+                        props.addListColor(res.data)
                     }).catch(e=>{
                         console.log(e)
                     })
@@ -160,7 +161,7 @@ const AddModalColor=(props)=>{
                     addEntity.style.display='none'
                     text_redirect.innerHTML='Thêm kích cỡ'
                     await setAddOrChoose(true)
-                    setLoading(false)
+                    await setLoading(false)
                     await value.showToastMessage("Thêm Màu Sắc Thành Công!")
                 },1000)
             }
@@ -192,7 +193,7 @@ const AddModalColor=(props)=>{
         <>
             {loading && <Loading/>}
             {/*Modal*/}
-            <div className="modal fixed bottom-0 top-0 left-0 right-0 z-2 bg-[rgba(0,0,0,0.4)]">
+            <div className="modal fixed bottom-0 top-0 left-0 right-0 z-[3] bg-[rgba(0,0,0,0.4)]">
                 <div className="flex justify-center items-center h-full">
                     <div className="modal-container min-w-[500px] p-[20px] bg-[#fff] rounded-[5px]">
                         <div className="flex justify-between">

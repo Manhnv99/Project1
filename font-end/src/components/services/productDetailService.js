@@ -13,6 +13,13 @@ class ProductDetailService{
     }
 
 
+    updatePriceandQuantity=(id,productDetailRequest)=>{
+        return axios.put(`http://localhost:8080/productdetail/update-price-quantity/${id}`,productDetailRequest)
+    }
+
+
+
+
 }
 
 export default new ProductDetailService()

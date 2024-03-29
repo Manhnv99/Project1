@@ -15,8 +15,8 @@ import {Toastmessage} from "./components/pages/maincontent/toastmessage/toastmes
 import UpdateNhanVien from "./components/pages/maincontent/taikhoan/UpdateNhanVien";
 import DetailNhanVien from "./components/pages/maincontent/taikhoan/DetailNhanVien";
 import AddSanPham from "./components/pages/maincontent/sanpham/AddSanPham";
-import AddModalSize from "./components/pages/maincontent/sanpham/modal/AddModalSize";
 import UpdateSanPham from "./components/pages/maincontent/sanpham/UpdateSanPham";
+import ModalProductDetail from "./components/pages/maincontent/sanpham/modal/ModalProductDetail";
 
 
 

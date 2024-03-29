@@ -51,4 +51,10 @@ public interface CategoryRepository extends JpaRepository<Category,Long> {
             (c.status is null or c.status=:status)
             """)
     List<CategoryResponse> findAllTotalPage(String name,Boolean status);
+
+
+    @Query("""
+            select c from Category c where c.name=:name
+            """)
+    Category getCategoryByName(String name);
 }

@@ -7,7 +7,6 @@
     display: block;
     animation: dropdown 0.2s ease-in-out;
 }
-
 .active {
     background-color: #1676fc;
     color: #fff
